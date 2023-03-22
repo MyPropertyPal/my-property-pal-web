@@ -1,15 +1,9 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "./page.module.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import React from "react";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <body>
-        <p className="text-red-500">This is my app</p>
-      </body>
+    <main>
+      <p className="text-red-500 h-screen  overflow-auto">This is my app asfajs;lfkja;slkfdja;lksfj;alskdfj;alskdfj;alskjfd;laskjdf;alskjdf;alksdjfa;lksdjf;alskdfja;lskdjf;alskdfja;lskdjfa;lskdfja;lskdfj</p>
     </main>
   );
 }
