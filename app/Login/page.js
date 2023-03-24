@@ -13,7 +13,8 @@ function Login() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        alert('signed in as ', user)
+
+        alert(user.email)
         // ...
       })
       .catch((error) => {
