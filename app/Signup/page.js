@@ -1,10 +1,11 @@
-"use client"
-import React from 'react'
+"use client";
+import React from "react";
 
 function SignUp() {
   return (
-    <div>Wooo!  Sign up!</div>
-  )
+    // ERROR- when this component loads it refreshes the page
+    <div>Wooo! Sign up!</div>
+  );
 }
 
-export default SignUp
+export default SignUp;
