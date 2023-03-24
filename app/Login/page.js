@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "@/firebase";
 function Login() {
@@ -76,9 +77,12 @@ function Login() {
         </div>
         <div className="flex space-x-9 mt-2">
           <p className=" text-sm text-gray-500">Dont have an account?</p>
-          <a href="/Signup" className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
+          <Link
+            href="/Signup"
+            className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+          >
             Click Here
-          </a>
+          </Link>
         </div>
       </form>
       <p className="text-center text-gray-500 text-xs">
