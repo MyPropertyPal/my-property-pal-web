@@ -9,6 +9,7 @@ function SignUp() {
 
   };
   return (
+    
     // ERROR- when this component loads it refreshes the page
     <div className="w-full max-w-xs m-auto">
       <form
