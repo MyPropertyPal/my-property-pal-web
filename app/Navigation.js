@@ -2,9 +2,9 @@ import React from "react";
 import Link from "next/link";
 function Header() {
   return (
-    <header className="bg-blue-500 flex flex-col w-[150px]">
-      <p>Navigation</p>
-      <ul>
+     <header className="bg-blue-500 flex space-x-10 h-[100px] justify-center align-">
+      <p>*Navigation Bar*</p>
+      <ul className="flex space-x-10">
         <li>
           <Link href="/">Home</Link>
         </li>
