@@ -1,21 +1,40 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import { auth } from "@/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 function SignUp() {
   const handleSignup = (e) => {
-    e.preventDefault()
-    console.log(e.target.firstName.value);
+    e.preventDefault();
+    const firstName = e.target.firstName.value;
+    const lastName = e.target.lastName.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const repeatPassword = e.target.repeatPassword.value;
 
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Created user
+        const user = userCredential.user;
+
+        alert(user.email, "created");
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
+      });
   };
   return (
-    
     // ERROR- when this component loads it refreshes the page
     <div className="w-full max-w-xs m-auto">
       <form
         className="shadow-lg rounded px-8 pt-6 pb-8 mb-4"
         onSubmit={handleSignup}
       >
+        {/* FIRST NAME */}
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
@@ -30,6 +49,7 @@ function SignUp() {
             placeholder="First Name"
           />
         </div>
+        {/* LAST NAME */}
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
@@ -44,20 +64,22 @@ function SignUp() {
             placeholder="Last Name"
           />
         </div>
+        {/* EMAIL */}
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
-            for="username"
+            for="email"
           >
             Email
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="email"
-            type="text"
+            type="email"
             placeholder="Email"
           />
         </div>
+        {/* PASSWORD */}
         <div className="mb-1">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
@@ -66,16 +88,17 @@ function SignUp() {
             Password
           </label>
           <input
-            className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             id="password"
             type="password"
             placeholder="******************"
           />
           {/* Use state here to determine if passwords match on signup then set styles and messages accordingly */}
-          <p className="text-red-500 text-xs italic">
+          {/* <p className="text-red-500 text-xs italic">
             Please choose a password.
-          </p>
+          </p> */}
         </div>
+        {/* REPEAT PASSWORD */}
         <div className="mb-6">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
@@ -84,15 +107,15 @@ function SignUp() {
             Repeat Password
           </label>
           <input
-            className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-            id="password"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            id="repeatPassword"
             type="password"
             placeholder="******************"
           />
           {/* Use state here to determine if passwords match on signup then set styles and messages accordingly */}
-          <p className="text-red-500 text-xs italic">
+          {/* <p className="text-red-500 text-xs italic">
             Please choose a password.
-          </p>
+          </p> */}
         </div>
         <div className="flex items-center justify-center ">
           <button
