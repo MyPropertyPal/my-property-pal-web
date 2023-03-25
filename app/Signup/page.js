@@ -6,7 +6,7 @@ function SignUp() {
   const handleSignup = (e) => {
     e.preventDefault()
     console.log(e.target.firstName.value);
-    
+
   };
   return (
     // ERROR- when this component loads it refreshes the page
