@@ -3,7 +3,9 @@ import React from "react";
 import Link from "next/link";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "@/firebase";
+import { useRouter } from "next/navigation";
 function Login() {
+  let router = useRouter()
   const handleLogin = (e) => {
     e.preventDefault();
     let email = e.target.email.value;
@@ -14,8 +16,9 @@ function Login() {
         // Signed in
         const user = userCredential.user;
 
-        alert(user.email);
-        // ...
+        // alert(user.email);
+        // Route to home after login
+        router.push('/')
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -25,7 +28,7 @@ function Login() {
   };
 
   return (
-    <div className="w-full max-w-xs m-auto">
+    <div className="w-full max-w-xs m-auto mt-[250px]">
       <form
         className="shadow-md rounded px-8 pt-6 pb-8 mb-4"
         onSubmit={handleLogin}
