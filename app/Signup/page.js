@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { auth } from "@/firebase";
+import { auth } from "@/app/firebase/config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { initFirebase } from "@/app/firebase/config";
 
 function SignUp() {
   const handleSignup = (e) => {
@@ -12,7 +13,8 @@ function SignUp() {
     const email = e.target.email.value;
     const password = e.target.password.value;
     const repeatPassword = e.target.repeatPassword.value;
-
+    const app = initFirebase();
+    const auth = getAuth(app);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Created user

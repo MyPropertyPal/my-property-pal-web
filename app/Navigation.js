@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { auth } from "@/firebase";
+import { auth } from "@/app/firebase/config";
 import { signOut } from "firebase/auth";
 function Header() {
   // const handleSignOut = () => {

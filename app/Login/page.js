@@ -2,29 +2,29 @@
 import React from "react";
 import Link from "next/link";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { auth, db } from "@/firebase";
+import app from "../firebase/config";
+import signIn from "../firebase/signup";
+
 import { useRouter } from "next/navigation";
 function Login() {
-  let router = useRouter()
-  const handleLogin = (e) => {
+  let router = useRouter();
+  const handleLogin = async (e) => {
     e.preventDefault();
     let email = e.target.email.value;
     let password = e.target.password.value;
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
+    const auth = getAuth(app);
 
-        // alert(user.email);
-        // Route to home after login
-        router.push('/')
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(errorMessage);
-      });
+    await signIn(auth, email, password);
+    const { result, error } = await signIn(email, password);
+
+    if (error) {
+      return console.log(error);
+    }
+
+    // else successful
+    console.log(result);
+    return router.push("/");
   };
 
   return (

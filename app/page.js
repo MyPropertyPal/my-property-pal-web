@@ -1,8 +1,11 @@
 // "use client";
 import React from "react";
-import { auth } from "@/firebase";
-
+import { auth } from "@/app/firebase/config";
+import app from "@/app/firebase/config";
+import { getAuth } from "firebase/auth";
 export default function Home() {
+
+  const auth = getAuth(app);
   const user = auth.currentUser;
   return (
     <main>
@@ -18,4 +21,3 @@ export default function Home() {
     </main>
   );
 }
-
