@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import app from "../firebase/config";
-import signIn from "../firebase/signup";
+import signIn from "../firebase/signin";
 
 import { useRouter } from "next/navigation";
 function Login() {

@@ -2,32 +2,40 @@
 import React from "react";
 import Link from "next/link";
 import { auth } from "@/app/firebase/config";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { initFirebase } from "@/app/firebase/config";
+import signUp from "../firebase/signup";
+import app from "../firebase/config";
+import { useRouter } from "next/navigation";
 
 function SignUp() {
-  const handleSignup = (e) => {
+  let router = useRouter();
+  const handleSignup = async (e) => {
     e.preventDefault();
     const firstName = e.target.firstName.value;
     const lastName = e.target.lastName.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
     const repeatPassword = e.target.repeatPassword.value;
-    const app = initFirebase();
-    const auth = getAuth(app);
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Created user
-        const user = userCredential.user;
 
-        alert(user.email, "created");
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(errorMessage);
-      });
+    if (password === repeatPassword) {
+      // alert("passwords match");
+      const auth = getAuth(app);
+
+      const { result, error } = await signUp(email, password);
+
+      if (error) {
+        return console.log(error);
+      }
+
+      // else successful
+      alert('User Created')
+      console.log(result);
+      // return router.push("/admin")
+      return router.push("/");
+    } else {
+      alert("Passwords do not match");
+    }
   };
   return (
     // ERROR- when this component loads it refreshes the page
