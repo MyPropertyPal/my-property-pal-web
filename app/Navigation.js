@@ -1,12 +1,25 @@
+"use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { auth } from "@/app/firebase/config";
+import { getAuth } from "firebase/auth";
 import { signOut } from "firebase/auth";
+import app from "./firebase/config";
+
+const auth = getAuth(app)
+
+
 function Header() {
-  // const handleSignOut = () => {
-  //   auth.signOut();
-  //   navigate("/");
-  // };
+  const router = useRouter();
+  const handleSignOut = async () => {
+    try {
+        auth.signOut();
+      alert("Signed out");
+      return router.push("/");
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
     <header className="bg-blue-500 flex space-x-10 h-[100px] justify-center align-">
       <p>*Navigation Bar*</p>
@@ -18,7 +31,7 @@ function Header() {
           <Link href="/Login">Login</Link>
         </li>
         <li>
-          <a href="">Sign Out</a>
+          <div onClick={handleSignOut}>Sign Out</div>
         </li>
       </ul>
       {/* add some links */}
