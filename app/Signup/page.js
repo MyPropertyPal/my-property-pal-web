@@ -7,6 +7,7 @@ import { initFirebase } from "@/app/firebase/config";
 import signUp from "../firebase/signup";
 import app from "../firebase/config";
 import { useRouter } from "next/navigation";
+import addData from "../firebase/firestore/addData";
 
 function SignUp() {
   let router = useRouter();
@@ -18,18 +19,26 @@ function SignUp() {
     const password = e.target.password.value;
     const repeatPassword = e.target.repeatPassword.value;
 
+    const data = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+    };
+
     if (password === repeatPassword) {
       // alert("passwords match");
       const auth = getAuth(app);
-
+      // create authenication
       const { result, error } = await signUp(email, password);
-
+      // add user to database
+      await addData("users", firstName, data);
+      
       if (error) {
         return console.log(error);
       }
 
       // else successful
-      alert('User Created')
+      alert("User Created");
       console.log(result);
       // return router.push("/admin")
       return router.push("/");
@@ -37,7 +46,7 @@ function SignUp() {
       alert("Passwords do not match");
     }
   };
-  return ( 
+  return (
     <div className="w-full max-w-xs m-auto my-[150px] ">
       <form
         className="shadow-lg rounded px-8 pt-6 pb-8 mb-4"

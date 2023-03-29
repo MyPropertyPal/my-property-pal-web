@@ -27,9 +27,11 @@ function Header() {
    */
 
   return (
-    // not logged in
     <header className="bg-blue-500 flex h-[80px]">
       {!user ? (
+        /**
+         * Not logged in
+         */
         <>
           <p className=" flex flex-1 ml-10 my-auto">*logo*</p>
           {/* right side */}
@@ -44,12 +46,20 @@ function Header() {
           </ul>
         </>
       ) : (
+        /**
+         * Logged in
+         */
         <>
           <p className=" flex flex-1 ml-10 my-auto">*logo*</p>
           <p className="mr-8 my-auto">Welcome, {user.email}</p>
-          <div onClick={handleSignOut}
-          className="mr-8 my-auto"
-          >Sign Out</div>
+          <ul>
+            <li>
+              <Link href="/Dashboard">Dashboard</Link>
+            </li>
+          </ul>
+          <div onClick={handleSignOut} className="mr-8 my-auto">
+            Sign Out
+          </div>
         </>
       )}
     </header>
