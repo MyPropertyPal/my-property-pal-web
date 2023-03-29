@@ -1,16 +1,17 @@
-'use client'
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import { useAuthContext } from "../context/AuthContext";
 import { useRouter } from "next/navigation";
 function Page() {
-    const { user } = useAuthContext()
-    const router = useRouter()
+  const { user } = useAuthContext();
+  const router = useRouter();
 
-    React.useEffect(() => {
-        if (user == null) router.push("/")
-    }, [user])
+  useEffect(() => {
+    if (user == null) router.push("/");
 
-    return (<h1>Only logged in users can view this page. Welcome {user.email}</h1>);
+  }, [user]);
+
+  return <h1>Only logged in users can view this page. </h1>;
 }
 
 export default Page;

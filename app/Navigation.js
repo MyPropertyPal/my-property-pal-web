@@ -6,14 +6,13 @@ import { getAuth } from "firebase/auth";
 import { signOut } from "firebase/auth";
 import app from "./firebase/config";
 
-const auth = getAuth(app)
-
+const auth = getAuth(app);
 
 function Header() {
   const router = useRouter();
   const handleSignOut = async () => {
     try {
-        auth.signOut();
+      auth.signOut();
       alert("Signed out");
       return router.push("/");
     } catch (err) {
@@ -31,6 +30,7 @@ function Header() {
           <Link href="/Login">Login</Link>
         </li>
         <li>
+          {/* make pointer/ or a link?? */}
           <div onClick={handleSignOut}>Sign Out</div>
         </li>
       </ul>

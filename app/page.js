@@ -17,6 +17,7 @@ export default function Home() {
           </p>
         </div>
       ) : (
+        // Hero
         <p>You are not signed in</p>
       )}
     </main>
