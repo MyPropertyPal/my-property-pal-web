@@ -20,9 +20,11 @@ function Header() {
     }
   };
   return (
-    <header className="bg-blue-500 flex space-x-10 h-[100px] justify-center align-">
-      <p>*Navigation Bar*</p>
-      <ul className="flex space-x-10">
+    <header className="bg-blue-500 flex h-[100px]">
+      {/* left side */}
+      <p className=" flex flex-1 ml-10 mt-8">*logo*</p>
+      {/* right side */}
+      <ul className="flex flex-2  space-x-8 my-8 mr-8">
         <li>
           <Link href="/">Home</Link>
         </li>
