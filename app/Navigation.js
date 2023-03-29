@@ -28,27 +28,32 @@ function Header() {
 
   return (
     // not logged in
-    <header className="bg-blue-500 flex h-[100px]">
+    <header className="bg-blue-500 flex h-[80px]">
       {!user ? (
         <>
-          <p className=" flex flex-1 ml-10 mt-8">*logo*</p>
+          <p className=" flex flex-1 ml-10 my-auto">*logo*</p>
           {/* right side */}
 
-          <ul className="flex flex-2  space-x-8 my-8 mr-8">
+          <ul className="flex flex-2  space-x-8 my-auto mr-8">
             <li>
-              <Link href="/">Home</Link>{" "}
+              <Link href="/">Home</Link>
             </li>
             <li>
-              <Link href="/Login">Login</Link>{" "}
+              <Link href="/Login">Login</Link>
             </li>
           </ul>
         </>
       ) : (
-        <div onClick={handleSignOut}>Sign Out</div>
+        <>
+          <p className=" flex flex-1 ml-10 my-auto">*logo*</p>
+          <p className="mr-8 my-auto">Welcome, {user.email}</p>
+          <div onClick={handleSignOut}
+          className="mr-8 my-auto"
+          >Sign Out</div>
+        </>
       )}
     </header>
   );
 }
 
 export default Header;
-

@@ -37,7 +37,7 @@ function SignUp() {
       alert("Passwords do not match");
     }
   };
-  return (
+  return ( 
     <div className="w-full max-w-xs m-auto my-[150px] ">
       <form
         className="shadow-lg rounded px-8 pt-6 pb-8 mb-4"
