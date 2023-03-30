@@ -13,8 +13,8 @@ function Header() {
   const router = useRouter();
   const handleSignOut = async () => {
     try {
-      auth.signOut();
-      alert("Signed out");
+      await auth.signOut();
+      // alert("Signed out");
       return router.push("/");
     } catch (err) {
       console.error(err);

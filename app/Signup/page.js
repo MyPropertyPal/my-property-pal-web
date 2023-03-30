@@ -31,8 +31,8 @@ function SignUp() {
       // create authenication
       const { result, error } = await signUp(email, password);
       // add user to database
-      await addData("users", firstName, data);
-      
+      await addData("users", email, data);
+
       if (error) {
         return console.log(error);
       }
