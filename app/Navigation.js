@@ -51,15 +51,18 @@ function Header() {
          */
         <>
           <p className=" flex flex-1 ml-10 my-auto">*logo*</p>
-          <p className="mr-8 my-auto">Welcome, {user.email}</p>
-          <ul>
+
+          <ul className="flex mr-8 my-auto space-x-5">
+            <li>
+              <Link href="/">Home</Link>
+            </li>
             <li>
               <Link href="/Dashboard">Dashboard</Link>
             </li>
+            <li>
+              <div onClick={handleSignOut}>Sign Out</div>
+            </li>
           </ul>
-          <div onClick={handleSignOut} className="mr-8 my-auto">
-            Sign Out
-          </div>
         </>
       )}
     </header>
