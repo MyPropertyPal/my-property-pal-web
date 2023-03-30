@@ -28,18 +28,20 @@ function Page() {
   return (
     <>
       {data ? (
-        <>
-          <h1 className="text-2xl">Welcome to the Dashboard {data.firstName}</h1>
-          <ul className="text-xl">
+        <div className="flex-col p-5">
+          <h1 className="text-2xl">
+            Welcome to the Dashboard {data.firstName}
+          </h1>
+          <ul className="text-xl space-y-3">
             <div className="underline">To Do</div>
-            <li>
-              switch around database so we can look them up with their email as
-              the id. We can query the user data from the firestore using their
-              email as the lookup.
+            <li className="list-decimal ml-8">
+              Make loading screen for dashboard
             </li>
-            <li>Your email is {user.email}</li>
+            <li className="list-decimal ml-8">
+              Work on making elements responsive to screen size
+            </li>
           </ul>
-        </>
+        </div>
       ) : null}
     </>
   );
