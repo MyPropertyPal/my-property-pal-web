@@ -35,10 +35,15 @@ function Page() {
           <ul className="text-xl space-y-3">
             <div className="underline">To Do</div>
             <li className="list-decimal ml-8">
-              Make loading screen for dashboard
+              Work on loading screen for dashboard | The dashboard should show
+              your current properties and their respective numbers, like a
+              portfolio overview
             </li>
+            <li className="list-decimal ml-8">Work on color palette</li>
+            <li className="list-decimal ml-8">Research google maps api </li>
             <li className="list-decimal ml-8">
-              Work on making elements responsive to screen size
+              Add map (search tab) feature and show properites in the area for
+              sale{" "}
             </li>
           </ul>
         </div>

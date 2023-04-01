@@ -6,7 +6,9 @@ export default function Layout({ children }) {
     <>
       <main className="flex">
         <SideNav />
-        <Suspense fallback={<Loading />}>{children}</Suspense>
+        {/* <Suspense fallback={<Loading />}> */}
+        {children}
+        {/* </Suspense> */}
       </main>
     </>
   );
