@@ -1,6 +1,6 @@
 "use client";
-import React, { useMemo } from "react";
-import { GoogleMap } from "@react-google-maps/api";
+import React from "react";
+
 
 // if (!isLoaded) return <div>Loading...</div>;
 export default function Map() {
