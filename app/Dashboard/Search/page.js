@@ -4,11 +4,10 @@ import React from "react";
 import Map from "@/components/Map";
 
 function Search() {
-
   return (
-    <div className="flex flex-col h-screen bg-green-500 w-[100%] p-8">
+    <div className="flex flex-col h-screen bg-gray-500  w-[100%] p-8 overflow-hidden">
       <>
-        <div>Search for new properties using the map</div>
+        {/* <div>Search for new properties using the map</div> */}
 
         <Map />
       </>
