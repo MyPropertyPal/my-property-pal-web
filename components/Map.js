@@ -4,6 +4,27 @@ import Map, { Marker } from "react-map-gl";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
+const properties = [
+  {
+    address: "123 stealth st.",
+    lat: 34.232276,
+    lng: -77.946817,
+    purchasePrice: 680000,
+  },
+  {
+    address: "123 main st.",
+    lat: 34.230178,
+    lng: -77.942374,
+    purchasePrice: 400000,
+  },
+  {
+    address: "123 todd st.",
+    lat: 34.222915,
+    lng: -77.939688,
+    purchasePrice: 734000,
+  },
+];
+
 // if (!isLoaded) return <div>Loading...</div>;
 export default function MapBox() {
   const [lng, setLng] = useState(null);
@@ -37,15 +58,26 @@ export default function MapBox() {
         width: "700px",
         height: "700px",
       }}
-      className="overflow-hidden"
       initialViewState={{
         longitude: lng,
         latitude: lat,
         zoom: 11,
+        projection: "globe",
       }}
       mapStyle="mapbox://styles/mapbox/dark-v10"
     >
-      <Marker longitude={lng} latitude={lat} anchor="bottom"></Marker>
+      {/* Map through properties */}
+      <Marker longitude={lng} latitude={lat} anchor="bottom">
+        You are here
+      </Marker>
+      {/* NOT FUNCTIONING */}
+      {/* {properties.map((prop) => {
+        <Marker
+          longitude={prop.lng}
+          latitude={prop.lat}
+          anchor="bottom"
+        ></Marker>;
+      })} */}
     </Map>
   );
 }
