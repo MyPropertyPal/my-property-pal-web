@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import Map, { Marker } from "react-map-gl";
+import Map, { Marker, Layer } from "react-map-gl";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -24,6 +24,19 @@ const properties = [
     purchasePrice: 734000,
   },
 ];
+
+const waterLayer = {
+  id: "water",
+  type: "fill",
+  source: {
+    type: "vector",
+    url: "mapbox://mapbox.mapbox-streets-v8",
+  },
+  "source-layer": "water",
+  paint: {
+    "fill-color": "#4E3FC8",
+  },
+};
 
 // if (!isLoaded) return <div>Loading...</div>;
 export default function MapBox() {
@@ -65,19 +78,26 @@ export default function MapBox() {
         projection: "globe",
       }}
       mapStyle="mapbox://styles/mapbox/dark-v10"
+      logoPosition="top-right"
+      fog={true}
     >
-      {/* Map through properties */}
-      <Marker longitude={lng} latitude={lat} anchor="bottom">
-        You are here
-      </Marker>
-      {/* NOT FUNCTIONING */}
-      {/* {properties.map((prop) => {
+      <Layer {...waterLayer} />
+
+      {/* Add markers */}
+      <Marker
+        longitude={lng}
+        latitude={lat}
+        anchor="bottom"
+        color="red"
+      ></Marker>
+      {properties.map((prop, index) => (
         <Marker
+          key={index}
           longitude={prop.lng}
           latitude={prop.lat}
           anchor="bottom"
-        ></Marker>;
-      })} */}
+        />
+      ))}
     </Map>
   );
 }

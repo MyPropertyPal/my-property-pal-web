@@ -40,10 +40,10 @@ function Page() {
               portfolio overview
             </li>
             <li className="list-decimal ml-8">Work on color palette</li>
-            <li className="list-decimal ml-8">Research google maps api </li>
+            <li className="list-decimal ml-8">Research Mapbox api </li>
             <li className="list-decimal ml-8">
               Add map (search tab) feature and show properites in the area for
-              sale{" "}
+              sale
             </li>
           </ul>
         </div>
