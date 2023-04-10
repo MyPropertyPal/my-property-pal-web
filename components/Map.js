@@ -10,18 +10,21 @@ const properties = [
     lat: 34.232276,
     lng: -77.946817,
     purchasePrice: 680000,
+    color: "yellow",
   },
   {
     address: "123 main st.",
     lat: 34.230178,
     lng: -77.942374,
     purchasePrice: 400000,
+    color: "orange",
   },
   {
     address: "123 todd st.",
     lat: 34.222915,
     lng: -77.939688,
     purchasePrice: 734000,
+    color: "green",
   },
 ];
 
@@ -42,21 +45,25 @@ const waterLayer = {
 export default function MapBox() {
   const [lng, setLng] = useState(null);
   const [lat, setLat] = useState(null);
-  console.log(lat, lng, "------");
+  const mapRef = useRef(null);
 
   async function getData() {
     const data = await response.text();
-    console.log("===", response); // "Hello, Next.js!"
   }
+
+  const mapLoaded = () => {
+    // this funtion will execute when the map loads
+    console.log(mapRef);
+  };
 
   useEffect(() => {
     // get the location on  load
     navigator.geolocation.getCurrentPosition(
       ({ coords: { latitude, longitude } }) => {
-        // setCoordinates([longitude, latitude]);
         setLat(latitude);
         setLng(longitude);
       }
+      // after lat and lng set... call RE api to get data with it
     );
   }, [lat, lng]);
 
@@ -80,33 +87,37 @@ export default function MapBox() {
       mapStyle="mapbox://styles/mapbox/dark-v10"
       logoPosition="top-right"
       fog={true}
+      ref={mapRef}
+      onLoad={mapLoaded(mapRef)}
     >
       <Layer {...waterLayer} />
 
       {/* Add markers */}
+      {/* The users location */}
       <Marker
         longitude={lng}
         latitude={lat}
         anchor="bottom"
         color="red"
+        // draggable={true}
+        onClick={(e) => {
+          alert(lng + " " + lat);
+        }}
+        rotation={20}
       ></Marker>
+      {/* Location of property data */}
       {properties.map((prop, index) => (
         <Marker
           key={index}
           longitude={prop.lng}
           latitude={prop.lat}
-          anchor="bottom"
+          onClick={(e) => {
+            console.log(e);
+            alert(prop.lng + " " + prop.lat);
+          }}
+          color={prop.color}
         />
       ))}
     </Map>
   );
 }
-
-//  <div
-// className="map-container h-screen"
-// ref={mapContainer}
-// id="map"
-// // style={{ width: 400, height: 600 }}
-// >
-
-// </div>
