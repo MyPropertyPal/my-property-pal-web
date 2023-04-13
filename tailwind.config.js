@@ -1,3 +1,5 @@
+const { fontFamily } = require("tailwindcss/defaultTheme");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -7,7 +9,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-    
+      fontFamily: {
+        lato: ["var(--font-lato", ...fontFamily.lato],
+      },
     },
   },
   plugins: [],
