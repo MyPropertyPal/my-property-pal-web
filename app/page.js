@@ -11,14 +11,19 @@ export default function Home() {
   return (
     <main>
       {user ? (
-        <div className="">
-          <p className="text-red-500  overflow-auto ">
-            Welcome {user.email}
-          </p>
+        <div className="h-screen flex">
+          <p className="text-red-500  overflow-auto ">Welcome {user.email}</p>
         </div>
       ) : (
         // Hero
-        <p>You are not signed in</p>
+        <div
+          className="flex  h-screen bg-slate-600 mx-20
+        "
+        >
+          <p className="flex  h-10 mx-auto my-10 text-xl bg-slate-300 font-lato ">
+            Welcome to My Property Pal!
+          </p>
+        </div>
       )}
     </main>
   );

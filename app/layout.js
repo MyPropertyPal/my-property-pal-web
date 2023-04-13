@@ -1,4 +1,5 @@
 import "./globals.css";
+import Head from "next/head";
 import Header from "./Navigation";
 import { getAuth } from "firebase/auth";
 import { initFirebase } from "@/app/firebase/config";
@@ -14,12 +15,14 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
+      <head></head>
       <body className="h-screen  bg-[#f6f6f6] ">
         <AuthContextProvider>
           {/* Include shared UI here e.g. a header or sidebar */}
           <Header />
           {children}
         </AuthContextProvider>
+        {/* Add footer */}
       </body>
     </html>
   );
