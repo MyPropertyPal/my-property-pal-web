@@ -8,11 +8,7 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        lato: ["var(--font-lato", ...fontFamily.lato],
-      },
-    },
+    extend: {},
   },
   plugins: [],
 };

@@ -11,6 +11,7 @@ export const metadata = {
   description: "My Property Pal",
 };
 
+//not working at the moment
 const lato = Lato({
   weight: "400",
   subsets: ["latin"],
@@ -24,7 +25,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head></head>
 
-      <body className="h-screen  bg-[#f6f6f6] `{lato.variable}`">
+      <body className="h-screen  `">
         <AuthContextProvider>
           {/* Include shared UI here e.g. a header or sidebar */}
           <Header />
