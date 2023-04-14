@@ -33,7 +33,9 @@ function Header() {
          * Not logged in
          */
         <>
-          <p className=" flex flex-1 ml-10 my-auto">*logo*</p>
+          <div className=" flex flex-1 ml-10 my-auto cursor-pointer">
+            *logo*
+          </div>
           {/* right side */}
 
           <ul className="flex flex-2  space-x-8 my-auto mr-8">
@@ -50,7 +52,7 @@ function Header() {
          * Logged in
          */
         <>
-          <p className=" flex flex-1 ml-10 my-auto">*logo*</p>
+          <p className="flex flex-1 ml-10 my-auto cursor-pointer">*logo*</p>
 
           <ul className="flex mr-8 my-auto space-x-5">
             <li>
