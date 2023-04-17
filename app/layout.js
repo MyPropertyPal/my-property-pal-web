@@ -25,7 +25,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head></head>
 
-      <body className="h-screen">
+      <body className="h-screen ">
+    
         <AuthContextProvider>
           {/* Include shared UI here e.g. a header or sidebar */}
           <Header />

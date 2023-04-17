@@ -27,7 +27,7 @@ function Header() {
    */
 
   return (
-    <header className="bg-blue-500 flex h-[80px]">
+    <header className="bg-[#3AB0FF] flex h-[80px]">
       {!user ? (
         /**
          * Not logged in
