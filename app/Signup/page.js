@@ -137,7 +137,7 @@ function SignUp() {
         </div>
         <div className="flex items-center justify-center ">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline "
+            className="bg-[#3AB0FF] hover:bg-[#287cb4] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline "
             // type="button"
           >
             Sign up
@@ -147,7 +147,7 @@ function SignUp() {
           <p className=" text-sm text-gray-500">Already have an account?</p>
           <Link
             href="/Login"
-            className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+            className="inline-block align-baseline font-bold text-sm text-[#3AB0FF] hover:text-[#287cb4]"
           >
             Sign in
           </Link>
