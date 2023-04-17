@@ -28,7 +28,7 @@ function Page() {
   return (
     <>
       {data ? (
-        <div className="flex-col p-5">
+        <div className="flex-col p-5 h-screen">
           <h1 className="text-2xl">
             Welcome to the Dashboard {data.firstName}
           </h1>
