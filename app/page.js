@@ -30,7 +30,7 @@ export default function Home() {
           >
             {/* title */}
             <p className=" h-30 md:h-10 mx-auto my-10  font-bold text-4xl justify-center text-center">
-              Real estate CRM for
+              Real estate CRM for{" "}
               <span className="underline decoration-blue-400 decoration-4 decoration">
                 nomadic
               </span>{" "}
@@ -39,19 +39,27 @@ export default function Home() {
             {/* FIRST SECTION */}
             <div className="flex flex-col h-[200px]  justify-left text-center text  justify-around">
               {/* TOP */}
-              <p className="font-semibold">
+              <p>
                 Built by a real estate investor, for real estate investors of
                 all sizes. My Property Pal is a cutting edge real estate
                 management stystem designed to help you live a nomadic lifestyle
                 abroad. All while maintaining and scaling your business to fit
-                your lifestyle.
+                your lifestyle. Built by a real estate investor, for real estate
+                investors of all sizes. My Property Pal is a cutting edge real
+                estate management stystem designed to help you live a nomadic
+                lifestyle abroad. All while maintaining and scaling your
+                business to fit your lifestyle. Built by a real estate investor,
+                for real estate investors of all sizes. My Property Pal is a
+                cutting edge real estate management stystem designed to help you
+                live a nomadic lifestyle abroad. All while maintaining and
+                scaling your business to fit your lifestyle.
               </p>
 
               {/* BOTTOM */}
-              <div className="flex  bg-slate-400 justify-center self-center ">
+              <div className="flex  justify-center self-center ">
                 <Link
                   href="/Signup"
-                  className=" text-center flex rounded-lg  h-10 w-[100px] bg-blue-400 m-auto  py-auto mb-10"
+                  className=" text-center flex rounded-lg  h-10 w-[100px] bg-blue-400 m-auto"
                 >
                   <p className="flex m-auto ">Sign up</p>
                 </Link>

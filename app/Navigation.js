@@ -2,9 +2,11 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { getAuth } from "firebase/auth";
 import app from "./firebase/config";
 import { useAuthContext } from "./context/AuthContext";
+import logo from "../components/imgs/logo.png";
 
 const auth = getAuth(app);
 
@@ -34,7 +36,15 @@ function Header() {
          */
         <>
           <div className=" flex flex-1 ml-10 my-auto cursor-pointer">
-            *logo*
+            <Link href="/">
+              <Image
+                src={logo}
+                alt="Company Logo"
+                width={80}
+                height={80}
+                className="rounded-xl pt-3 ml-4"
+              />
+            </Link>
           </div>
           {/* right side */}
 
