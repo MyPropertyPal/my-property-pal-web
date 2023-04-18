@@ -35,14 +35,14 @@ function Header() {
          * Not logged in
          */
         <>
-          <div className=" flex flex-1 ml-10 my-auto cursor-pointer">
+          <div className=" flex flex-1 ml-5 md:ml-10 my-auto cursor-pointer">
             <Link href="/">
               <Image
                 src={logo}
                 alt="Company Logo"
                 width={80}
                 height={80}
-                className="rounded-xl pt-3 ml-4"
+                className="rounded-xl pt-3 "
               />
             </Link>
           </div>
