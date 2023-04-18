@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { auth } from "@/app/firebase/config";
 import app from "@/app/firebase/config";
 import { getAuth } from "firebase/auth";
@@ -28,16 +29,34 @@ export default function Home() {
           "
           >
             {/* title */}
-            <p className="flex  h-10 mx-auto my-10 text-xl font-thin justify-center">
-              Welcome to My Property Pal!
+            <p className="flex  h-10 mx-auto my-10  font-bold text-4xl justify-center text-center">
+              Real estate CRM for savy real estate investors
             </p>
-            {/* ABOUT US */}
-            <div className="flex bg-blue-300 h-[300px] my-8 space-x-9 justify-center">
-              {/* LEFT */}
-              <div className="flex w-[40%] bg-red-300 ">TEXT</div>
-              {/* RIGHT */}
-              <div className="flex justify-between  w-[40%] bg-red-300">
-                IMAGE
+            {/* FIRST SECTION */}
+            <div className="flex flex-col h-[200px]  justify-left text-center text  justify-around">
+              {/* TOP */}
+              <p className="flex ">
+                Built by a real estate investor, for real estate investors of all sizes. My Property Pal is
+                a cutting edge real estate management stystem designed to help
+                you live a nomatic lifestyle abroad. All while maintaining and
+                scaling your business.
+              </p>
+
+              {/* BOTTOM */}
+              <div className="flex flex-col">
+                {/* <p>Get started: </p> */}
+              <Link
+                href="/Signup"
+                className=" text-center  flex rounded-lg hover:text-[#287cb4] h-10 w-[100px] bg-blue-400 m-auto  py-auto mb-10"
+              >
+                <p className="flex m-auto ">
+                Sign up
+
+                </p>
+              </Link>
+
+
+
               </div>
             </div>
             {/* CONTENT SECTION */}
