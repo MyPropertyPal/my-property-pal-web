@@ -27,7 +27,7 @@ function Header() {
    */
 
   return (
-    <header className="bg-[#3AB0FF] flex h-[80px]">
+    <header className=" flex h-[80px]">
       {!user ? (
         /**
          * Not logged in
@@ -38,7 +38,7 @@ function Header() {
           </div>
           {/* right side */}
 
-          <ul className="flex flex-2  space-x-8 my-auto mr-8">
+          <ul className="flex flex-2  space-x-8 my-auto mr-10">
             <li>
               <Link href="/">Home</Link>
             </li>
