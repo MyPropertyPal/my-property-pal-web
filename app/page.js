@@ -38,7 +38,7 @@ export default function Home() {
               real estate investors
             </p>
             {/* FIRST SECTION */}
-            <div className="flex flex-col h-[200px]  justify-left text-center text  justify-around ">
+            <div className="flex flex-col h-[200px] bg-slate-200 justify-left text-center text  justify-around ">
               {/* TOP */}
               <p>
                 Built by a real estate investor, for real estate investors of
@@ -48,8 +48,6 @@ export default function Home() {
                 your lifestyle. Our technologies makes living your best life
                 abroad easy.
               </p>
-
-              {/* BOTTOM */}
               <div className="flex  justify-center self-center ">
                 <Link
                   href="/Signup"
@@ -58,13 +56,14 @@ export default function Home() {
                   <p className="flex m-auto ">Sign up</p>
                 </Link>
               </div>
+
             </div>
+          <div className="absolute h-[60%] w-[90%] top-2/4 bg-blue-400 rounded-t-[50%]"></div>
+              {/* BOTTOM */}
             {/* Background */}
           </div>
-          <div className="absolute h-[60%] w-[100%] top-2/4 bg-blue-500 m-10"></div>
         </div>
       )}
-
     </main>
   );
 }
