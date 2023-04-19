@@ -27,6 +27,7 @@ export default function Home() {
             className="
            mx-auto w-[90%]
            h-screen
+           flex-col
           "
           >
             {/* title */}
@@ -38,9 +39,9 @@ export default function Home() {
               real estate investors
             </p>
             {/* FIRST SECTION */}
-            <div className="flex flex-col h-[200px] bg-slate-200 justify-left text-center text  justify-around ">
+            <div className="flex flex-col h-[200px]  justify-left text-center text  justify-around ">
               {/* TOP */}
-              <p>
+              <p className="w-[80%] m-auto">
                 Built by a real estate investor, for real estate investors of
                 all sizes. My Property Pal is a cutting edge real estate
                 management stystem designed to help you live a nomadic lifestyle
@@ -48,7 +49,7 @@ export default function Home() {
                 your lifestyle. Our technologies makes living your best life
                 abroad easy.
               </p>
-              <div className="flex  justify-center self-center ">
+              <div className="flex  justify-center self-center mt-5">
                 <Link
                   href="/Signup"
                   className=" text-center flex rounded-lg  h-10 w-[100px] bg-blue-400 m-auto"
@@ -56,10 +57,22 @@ export default function Home() {
                   <p className="flex m-auto ">Sign up</p>
                 </Link>
               </div>
-
             </div>
-          <div className="absolute h-[60%] w-[90%] top-2/4 bg-blue-400 rounded-t-[50%]"></div>
-              {/* BOTTOM */}
+            {/* middle seciont w/ background */}
+            <div className="h-full  z-10 relative mt-10 ">
+              {/* blue bg */}
+              <div className="absolute h-full w-[100%] top-20 md:top-20 z-0 bg-blue-400 rounded-t-[20%] md:rounded-t-[40%]"></div>
+              {/* black box */}
+              <div
+                className=" relative w-[70%] md:w-[50%] h-[300px] md:h-[400px] z-10 m-auto bg-slate-900 border-[#D39852]
+               border-[3px] rounded-3xl mt-5"
+              >
+                <p className="text-white text-center pt-8 text-3xl">
+                  *Map Info*
+                </p>
+              </div>
+            </div>
+            {/* BOTTOM */}
             {/* Background */}
           </div>
         </div>
