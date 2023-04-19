@@ -87,6 +87,7 @@ export default function MapBox() {
       mapStyle="mapbox://styles/mapbox/dark-v10"
       logoPosition="top-right"
       fog={true}
+      // interactive={false}
       ref={mapRef}
       onLoad={mapLoaded(mapRef)}
     >
@@ -113,7 +114,7 @@ export default function MapBox() {
           latitude={prop.lat}
           onClick={(e) => {
             console.log(e);
-            alert(prop.lng + " " + prop.lat);
+            alert(prop.address);
           }}
           color={prop.color}
         />
