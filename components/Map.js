@@ -4,6 +4,8 @@ import Map, { Marker, Layer } from "react-map-gl";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
+
+// dummy data
 const properties = [
   {
     address: "123 stealth st.",

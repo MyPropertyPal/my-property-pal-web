@@ -26,6 +26,7 @@ export default function Home() {
             // content container
             className="
            mx-auto w-[90%]
+           h-screen
           "
           >
             {/* title */}
@@ -37,22 +38,15 @@ export default function Home() {
               real estate investors
             </p>
             {/* FIRST SECTION */}
-            <div className="flex flex-col h-[200px]  justify-left text-center text  justify-around">
+            <div className="flex flex-col h-[200px]  justify-left text-center text  justify-around ">
               {/* TOP */}
               <p>
                 Built by a real estate investor, for real estate investors of
                 all sizes. My Property Pal is a cutting edge real estate
                 management stystem designed to help you live a nomadic lifestyle
                 abroad. All while maintaining and scaling your business to fit
-                your lifestyle. Built by a real estate investor, for real estate
-                investors of all sizes. My Property Pal is a cutting edge real
-                estate management stystem designed to help you live a nomadic
-                lifestyle abroad. All while maintaining and scaling your
-                business to fit your lifestyle. Built by a real estate investor,
-                for real estate investors of all sizes. My Property Pal is a
-                cutting edge real estate management stystem designed to help you
-                live a nomadic lifestyle abroad. All while maintaining and
-                scaling your business to fit your lifestyle.
+                your lifestyle. Our technologies makes living your best life
+                abroad easy.
               </p>
 
               {/* BOTTOM */}
@@ -65,27 +59,12 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            {/* CONTENT SECTION */}
-            <div className="flex bg-blue-300 h-[300px] my-8 space-x-9 justify-center">
-              {/* LEFT */}
-              <div className="flex w-[40%] bg-red-300 ">IMAGE</div>
-              {/* RIGHT */}
-              <div className="flex justify-between  w-[40%] bg-red-300">
-                TEXT
-              </div>
-            </div>
-            {/* EXTRA INFO */}
-            <div className="flex bg-blue-300 h-[300px] my-8 space-x-9 justify-center">
-              {/* LEFT */}
-              <div className="flex w-[40%] bg-red-300 ">TEXT</div>
-              {/* RIGHT */}
-              <div className="flex justify-between  w-[40%] bg-red-300">
-                IMAGE
-              </div>
-            </div>
+            {/* Background */}
           </div>
+          <div className="absolute h-[60%] w-[100%] top-2/4 bg-blue-500 m-10"></div>
         </div>
       )}
+
     </main>
   );
 }
