@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+
 import Link from "next/link";
 import Image from "next/image";
 import { getAuth } from "firebase/auth";
@@ -17,37 +17,24 @@ function Header() {
   // state management
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
+
   // fn redeclarations
-  const router = useRouter();
   const { user } = useAuthContext();
 
   // call firebase helper fn
   const getUserInfo = async () => {
-    const docSnap = await getUser("users", user.email);
-    setFirstName(docSnap.firstName);
-    setLastName(docSnap.lastName);
-    // console.log(docSnap);
+    if (user) {
+      const docSnap = await getUser("users", user.email);
+      setFirstName(docSnap.firstName);
+      setLastName(docSnap.lastName);
+      // console.log(docSnap);
+    }
   };
 
   useEffect(() => {
     // get user data once on page load
     getUserInfo();
   }, []);
-
-  // data view
-  // console.log(collectionRef);
-
-  //get user info
-
-  const handleSignOut = async () => {
-    try {
-      await auth.signOut();
-      // alert("Signed out");
-      return router.push("/");
-    } catch (err) {
-      console.error(err);
-    }
-  };
 
   return (
     <header className=" flex h-[80px]">
@@ -94,7 +81,6 @@ function Header() {
             </li>
             <li className="flex">
               <UserLogo />
-              <div onClick={handleSignOut}>Sign Out</div>
             </li>
           </ul>
         </>

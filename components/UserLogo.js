@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { getAuth } from "firebase/auth";
 import app from "@/app/firebase/config";
 
-const auth = getAuth(app)
+const auth = getAuth(app);
 
 export default function UserLogo() {
   //state management
@@ -32,7 +32,6 @@ export default function UserLogo() {
   const handleSignOut = async () => {
     try {
       await auth.signOut();
-      alert("Signed out");
       return router.push("/");
     } catch (err) {
       console.error(err);
