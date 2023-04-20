@@ -1,19 +1,20 @@
 import app from "../config";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { db } from "../config";
+import { collection } from "firebase/firestore";
 
-const db = getFirestore(app);
-export default async function getDoument(collection, id) {
-  let docRef = doc(db, collection, id);
-  console.log(docRef, "------=");
+// Helper fns
+export default async function getUser(collection, id) {
+  const docRef = doc(db, collection, id);
+  const docSnap = await getDoc(docRef);
 
-  let result = null;
-  let error = null;
-
-  try {
-    result = await getDoc(docRef);
-  } catch (e) {
-    error = e;
+  if (docSnap.exists()) {
+    // console.log("Document data:", docSnap.data());
+    return docSnap.data()
+  } else {
+    // docSnap.data() will be undefined in this case
+    console.log("No such document!");
   }
 
-  return { result, error };
+  // const user = db.collection(collection).doc.
 }
