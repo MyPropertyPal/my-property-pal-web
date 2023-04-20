@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, {useEffect} from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,11 +7,16 @@ import { getAuth } from "firebase/auth";
 import app from "./firebase/config";
 import { useAuthContext } from "./context/AuthContext";
 import logo from "../components/imgs/logo.png";
-
+import UserLogo from "@/components/UserLogo";
+import { doc, getDocs, collection } from "firebase/firestore";
+import { db } from "./firebase/config";
 const auth = getAuth(app);
 
 function Header() {
   const { user } = useAuthContext();
+  const collectionRef = collection(db, 'users')
+  console.log(collectionRef)
+  console.log(user)
   const router = useRouter();
   const handleSignOut = async () => {
     try {
@@ -22,11 +27,12 @@ function Header() {
       console.error(err);
     }
   };
-  /**
-   * 2 nav bar layouts
-   * 1st: hero section for users who are not loggeg in
-   * 2nd: for users who are logged in
-   */
+
+
+
+ 
+
+
 
   return (
     <header className=" flex h-[80px]">
@@ -65,14 +71,15 @@ function Header() {
           <p className="flex flex-1 ml-10 my-auto cursor-pointer">*logo*</p>
 
           <ul className="flex mr-8 my-auto space-x-5">
-            <li>
+            <li className="my-auto">
               <Link href="/">Home</Link>
             </li>
-            <li>
+            <li className="my-auto">
               <Link href="/Dashboard">Dashboard</Link>
             </li>
-            <li>
-              <div onClick={handleSignOut}>Sign Out</div>
+            <li className="flex">
+              <UserLogo />
+              <div onClick={handleSignOut} >Sign Out</div>
             </li>
           </ul>
         </>

@@ -14,6 +14,7 @@ export default function Home() {
       {user ? (
         <div className="h-screen flex">
           <p className="text-red-500  overflow-auto ">Welcome {user.email}</p>
+          
         </div>
       ) : (
         // Hero section
@@ -70,6 +71,9 @@ export default function Home() {
                 <p className="text-white text-center pt-8 text-3xl">
                   *Map Info*
                 </p>
+                <div className="text-white text-center pt-8 text-3xl font-thin">
+                  **Picture of mapbox api**
+                </div>
               </div>
             </div>
             {/* BOTTOM */}

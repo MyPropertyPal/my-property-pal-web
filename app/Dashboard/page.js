@@ -45,6 +45,7 @@ function Page() {
               Add map (search tab) feature and show properites in the area for
               sale
             </li>
+            <li className="list-decimal ml-8">Make a add property button somewhere that adds a property colection to the firestore db with address.</li>
           </ul>
         </div>
       ) : null}
