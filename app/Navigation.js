@@ -37,7 +37,7 @@ function Header() {
   }, []);
 
   return (
-    <header className=" flex h-[80px]">
+    <header className=" flex h-[90px]">
       {!user ? (
         /**
          * Not logged in
@@ -70,7 +70,17 @@ function Header() {
          * Logged in
          */
         <>
-          <p className="flex flex-1 ml-10 my-auto cursor-pointer">*logo*</p>
+        <div className=" flex flex-1 ml-5 md:ml-10 my-auto cursor-pointer">
+            <Link href="/">
+              <Image
+                src={logo}
+                alt="Company Logo"
+                width={80}
+                height={80}
+                className="rounded-xl pt-3 "
+              />
+            </Link>
+          </div>
 
           <ul className="flex mr-8 my-auto space-x-5">
             <li className="my-auto">

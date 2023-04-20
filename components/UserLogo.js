@@ -64,8 +64,35 @@ export default function UserLogo() {
             selectionMode="single"
             onSelectionChange={(e) => {
               const { currentKey } = e;
-              if (currentKey === "logout") {
-                handleSignOut();
+
+              switch (currentKey) {
+                case "profile":
+                  alert("profile");
+                  break;
+                case "setting":
+                  alert("settings");
+                  break;
+                case "team_settings":
+                  alert("Team settings");
+                  break;
+                case "analytics":
+                  alert("analytics");
+                  break;
+                case "system":
+                  alert("system clicked");
+                  break;
+                case "configurations":
+                  alert("configurations");
+                  break;
+                case "help_and_feedback":
+                  alert("help and feedback");
+                  break;
+                case "logout":
+                  handleSignOut();
+                  break;
+
+                default:
+                  break;
               }
             }}
           >
