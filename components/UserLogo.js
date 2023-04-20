@@ -1,12 +1,23 @@
 import React, { useState, useEffect } from "react";
+import Link from "@nextui-org/react";
 import { Dropdown, Avatar, Text, Grid, User } from "@nextui-org/react";
 import { useAuthContext } from "@/app/context/AuthContext";
 import getUser from "@/app/firebase/firestore/getData";
+import { useRouter } from "next/navigation";
+import { getAuth } from "firebase/auth";
+import app from "@/app/firebase/config";
+
+const auth = getAuth(app)
 
 export default function UserLogo() {
+  //state management
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
+
+  // fn redeclarations
   const { user } = useAuthContext();
+  const router = useRouter();
+
   // console.log(user.firstName, "======");
 
   // call firebase helper fn
@@ -15,6 +26,17 @@ export default function UserLogo() {
     setFirstName(docSnap.firstName);
     setLastName(docSnap.lastName);
     console.log(docSnap);
+  };
+
+  //handle signout
+  const handleSignOut = async () => {
+    try {
+      await auth.signOut();
+      alert("Signed out");
+      return router.push("/");
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   useEffect(() => {
@@ -37,7 +59,17 @@ export default function UserLogo() {
               src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
             />
           </Dropdown.Trigger>
-          <Dropdown.Menu color="primary" aria-label="User Actions">
+          <Dropdown.Menu
+            color="primary"
+            aria-label="User Actions"
+            selectionMode="single"
+            onSelectionChange={(e) => {
+              const { currentKey } = e;
+              if (currentKey === "logout") {
+                handleSignOut();
+              }
+            }}
+          >
             <Dropdown.Item key="profile" css={{ height: "$18" }}>
               <Text b color="inherit" css={{ d: "flex" }}>
                 Signed in as
@@ -58,7 +90,12 @@ export default function UserLogo() {
             <Dropdown.Item key="help_and_feedback" withDivider>
               Help & Feedback
             </Dropdown.Item>
-            <Dropdown.Item key="logout" color="error" withDivider>
+            <Dropdown.Item
+              key="logout"
+              color="error"
+              withDivider
+              onAction={handleSignOut}
+            >
               Log Out
             </Dropdown.Item>
           </Dropdown.Menu>
