@@ -4,7 +4,6 @@ import Map, { Marker, Layer } from "react-map-gl";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-
 // dummy data
 const properties = [
   {
@@ -116,7 +115,7 @@ export default function MapBox() {
           latitude={prop.lat}
           onClick={(e) => {
             console.log(e);
-            alert(prop.address);
+            alert(prop.lng + " " + prop.lat);
           }}
           color={prop.color}
         />
