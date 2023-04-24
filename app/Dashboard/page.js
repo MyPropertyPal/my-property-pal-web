@@ -27,10 +27,10 @@ function Page() {
 
   return (
     <>
-      {data ? (
-        <div className="flex-col p-5 h-screen">
+      {user ? (
+        <div className="flex-col p-5 h-screen bg-red-100">
           <h1 className="text-2xl">
-            Welcome to the Dashboard {data.firstName}
+            Welcome to the Dashboard {user.firstName}
           </h1>
           <ul className="text-xl space-y-3">
             <div className="underline">To Do</div>
@@ -45,10 +45,15 @@ function Page() {
               Add map (search tab) feature and show properites in the area for
               sale
             </li>
-            <li className="list-decimal ml-8">Make a add property button somewhere that adds a property colection to the firestore db with address.</li>
+            <li className="list-decimal ml-8">
+              Make a add property button somewhere that adds a property
+              colection to the firestore db with address.
+            </li>
           </ul>
         </div>
-      ) : null}
+      ) : (
+        <div>no data</div>
+      )}
     </>
   );
 }

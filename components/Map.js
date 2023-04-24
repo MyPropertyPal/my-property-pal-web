@@ -75,10 +75,13 @@ export default function MapBox() {
   return (
     <Map
       mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_GL_ACCESS_TOKEN}
-      style={{
-        width: "700px",
-        height: "700px",
-      }}
+      style={
+        {
+          width: "100%",
+          height: "600px",
+          border: '1px solid red'
+        }
+      }
       initialViewState={{
         longitude: lng,
         latitude: lat,
