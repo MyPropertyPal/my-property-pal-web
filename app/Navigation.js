@@ -70,7 +70,7 @@ function Header() {
          * Logged in
          */
         <>
-        <div className=" flex flex-1 ml-5 md:ml-10 my-auto cursor-pointer">
+          <div className=" flex flex-1 ml-5 md:ml-10 my-auto cursor-pointer">
             <Link href="/">
               <Image
                 src={logo}
@@ -83,10 +83,10 @@ function Header() {
           </div>
 
           <ul className="flex mr-8 my-auto space-x-5">
-            <li className="my-auto">
+            <li className="my-auto hover:-translate-y-1 decoration-2  transition-transform duration-200">
               <Link href="/">Home</Link>
             </li>
-            <li className="my-auto">
+            <li className="my-auto hover:-translate-y-1 decoration-2  transition-transform duration-200">
               <Link href="/Dashboard">Dashboard</Link>
             </li>
             <li className="flex">
