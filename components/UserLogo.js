@@ -25,7 +25,7 @@ export default function UserLogo() {
     const docSnap = await getUser("users", user.email);
     setFirstName(docSnap.firstName);
     setLastName(docSnap.lastName);
-    console.log(docSnap);
+
   };
 
   //handle signout
