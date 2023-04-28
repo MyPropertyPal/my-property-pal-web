@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { getAuth } from "firebase/auth";
 import Link from "next/link";
+import { properties } from "@/data";
 
 async function fetchPropeties() {
   await fetch("api/").then((res) => {
@@ -31,22 +32,18 @@ function UserHome({ user }) {
         <div className="flex flex-col">
           <h2>Here is your current list of properties:</h2>
           <ul>
-            <li>Prop1</li>
-            <li>Prop2</li>
-            <li>Prop3</li>
-            <li>Prop4</li>
-            <li>Prop5</li>
+            {properties.map((prop, idx) => (
+              <li key={idx} className="m-5 p-2 bg-slate-50">
+                <div>{prop.address}</div>
+                <div>{prop.style}</div>
+                <div>${prop.price}</div>
+              </li>
+            ))}
           </ul>
-          <a
-            href=""
-            onClick={() =>
-              alert("***link to a page that shows all properties***")
-            }
-            className="text-blue-500"
-          >
+          <Link href="/Dashboard/Portfolio" className="text-blue-500">
             {" "}
             See all properties
-          </a>
+          </Link>
           <button className="bg-blue-400 w-[100px] mx-auto rounded-md p-1 m-5">
             <Link href="/Dashboard/Search">Show on map</Link>
           </button>

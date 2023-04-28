@@ -25,6 +25,15 @@ function SideNav() {
         <span className="bg-[#DBB073]  hover:visible w-[10px] h-[2px] mr-2 my-auto"></span>
         <Link
           className="hover:bg-slate-500 transition-all hover:px-3 w-fit rounded-lg"
+          href="Dashboard/Portfolio"
+        >
+          Portfolio
+        </Link>
+      </div>
+      <div className="flex">
+        <span className="bg-[#DBB073]  hover:visible w-[10px] h-[2px] mr-2 my-auto"></span>
+        <Link
+          className="hover:bg-slate-500 transition-all hover:px-3 w-fit rounded-lg"
           href="Dashboard/Settings"
         >
           Settings
