@@ -50,7 +50,7 @@ function Header() {
                 alt="Company Logo"
                 width={80}
                 height={80}
-                className="rounded-xl pt-3 "
+                className="rounded-xl  "
               />
             </Link>
           </div>
