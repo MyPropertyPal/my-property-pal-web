@@ -52,7 +52,7 @@ function Page() {
           </ul>
         </div>
       ) : (
-        <div>no data</div>
+        <div>no data to load</div>
       )}
     </>
   );
