@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import Link from "next/link";
 import { properties } from "@/data";
+import AddPropPopup from "./addPropPopup";
 
 async function fetchPropeties() {
   await fetch("api/").then((res) => {
@@ -11,12 +12,25 @@ async function fetchPropeties() {
 
 fetchPropeties();
 function UserHome({ user }) {
+  const [popTrigger, setPopTrigger] = useState(true);
   useEffect(() => {
     // console.log("fetching users saved properties");
     // fetch("api/").then((res) => {
     //   console.log(res.text());
     // });
   }, []);
+
+  const showPopup = () => {
+    setPopTrigger(!popTrigger);
+  };
+
+  if (popTrigger) {
+    return (
+      <div>
+        <AddPropPopup showPopup={showPopup} />;
+      </div>
+    );
+  }
 
   return (
     <div className=" max-h-screen flex-col space-y-7">
@@ -47,7 +61,10 @@ function UserHome({ user }) {
           <button className="bg-blue-400 w-[100px] mx-auto rounded-md p-1 m-5">
             <Link href="/Dashboard/Search">Show on map</Link>
           </button>
-          <button className="bg-blue-400 w-[100px] mx-auto rounded-md p-1">
+          <button
+            className="bg-blue-400 w-[100px] mx-auto rounded-md p-1"
+            onClick={() => showPopup()}
+          >
             add properties
           </button>
         </div>
