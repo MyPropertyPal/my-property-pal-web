@@ -1,21 +1,22 @@
 import React from "react";
 import { properties } from "@/data";
 
+console.log('ahkdjfa')
 function page() {
+  const addProperties = () => {
+  };
   return (
     // PAGE CONTAINER
     <div className="flex flex-col h-screen w-screen">
       {/* HEADER */}
       <div className="flex">
-        <h1 className="text-5xl justify-center pt-4 h-fit mx-auto">
+        <h1
+          className="text-5xl justify-center pt-4 h-fit mx-auto"
+          onClick={addProperties()}
+        >
           Portfolio
         </h1>
-        <button
-          className="bg-blue-400 w-[100px] mx-auto rounded-md p-1"
-          // onClick={() => {
-          //   alert("**opens up add property form**");
-          // }}
-        >
+        <button className="bg-blue-400 w-[100px] mx-auto rounded-md p-1">
           add properties
         </button>
       </div>
