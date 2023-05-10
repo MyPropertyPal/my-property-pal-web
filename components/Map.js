@@ -48,9 +48,9 @@ export default function MapBox() {
   const [lat, setLat] = useState(null);
   const mapRef = useRef(null);
 
-  async function getData() {
-    const data = await response.text();
-  }
+  // async function getData() {
+  //   const data = await response.text();
+  // }
 
   const mapLoaded = () => {
     // this funtion will execute when the map loads

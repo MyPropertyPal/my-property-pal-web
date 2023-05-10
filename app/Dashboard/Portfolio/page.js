@@ -1,10 +1,10 @@
 import React from "react";
 import { properties } from "@/data";
+import Link from "next/link";
 
-console.log('ahkdjfa')
+console.log("ahkdjfa");
 function page() {
-  const addProperties = () => {
-  };
+  const addProperties = () => {};
   return (
     // PAGE CONTAINER
     <div className="flex flex-col h-screen w-screen">
@@ -17,7 +17,7 @@ function page() {
           Portfolio
         </h1>
         <button className="bg-blue-400 w-[100px] mx-auto rounded-md p-1">
-          add properties
+          <Link href="/Dashboard/Portfolio/Add">Add Properties</Link>
         </button>
       </div>
       <h2 className="p-5 text-2xl">List of current properties: </h2>
