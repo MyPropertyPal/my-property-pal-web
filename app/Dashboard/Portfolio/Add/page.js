@@ -1,12 +1,27 @@
 "use client";
-import React from "react";
+import React, { useState, useMemo } from "react";
 import Link from "next/link";
+import { Dropdown } from "@nextui-org/react";
+import { states } from "@/data";
 
-function page() {
+//made this a capital "P" to make it a react fn component to use "useState"
+function Page() {
+  const [state, setState] = useState("Select");
   const addProperty = (e) => {
     e.preventDefault();
     alert("property added to db");
   };
+
+  const menuItems = [
+    { key: "NC", name: "North Carolina" },
+    { key: "SC", name: "South Carolina" },
+  ];
+
+  // const selectedValue = =useMemo(
+  //   () => Array.from(selected).join(", ").replaceAll("_", " "),
+  //   [selected]
+  // );
+
   return (
     // PAGE CONTAINER
     <div className="h-screen w-screen bg-slate-300">
@@ -46,19 +61,43 @@ function page() {
             type="text"
             placeholder="Wilmington"
           />
-          {/* STATE */}
+          {/* STATE  ============================== */}
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             for="state"
           >
             State
           </label>
-          <input
+          <Dropdown>
+            <Dropdown.Button solid className="bg-blue-500">
+              {state}
+            </Dropdown.Button>
+
+            <Dropdown.Menu
+              aria-label="Single selection actions"
+              color="secondary"
+              disallowEmptySelection
+              selectionMode="single"
+              selectedKeys={state}
+              onSelectionChange={setState}
+              items={states}
+            >
+              {(state) => (
+                <Dropdown.Item
+                  key={state.key}
+                  color={state.key === "delete" ? "error" : "default"}
+                >
+                  {state.name}
+                </Dropdown.Item>
+              )}
+            </Dropdown.Menu>
+          </Dropdown>
+          {/* <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             id="state"
             type="text"
             placeholder="***Make this a dropdown***"
-          />
+          /> */}
           {/* ZIP */}
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
@@ -114,4 +153,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
