@@ -18,9 +18,6 @@ function UserHome({ user }) {
     // });
   }, []);
 
-
-
-
   return (
     <div className=" max-h-screen flex-col space-y-7">
       {/* TOP SECTION */}
@@ -47,15 +44,20 @@ function UserHome({ user }) {
             {" "}
             See all properties
           </Link>
-          <button className="bg-blue-400 w-[100px] mx-auto rounded-md p-1 m-5">
-            <Link href="/Dashboard/Search">Show on map</Link>
-          </button>
-          <button
-            className="bg-blue-400 w-[100px] mx-auto rounded-md p-1"
-            
+
+          <Link
+            href="/Dashboard/Search"
+            className=" flex text-center bg-blue-400 w-[100px] mx-auto rounded-md p-1 mb-3"
           >
-            <Link href="/Dashboard/Portfolio/Add">Add Properties</Link>
-          </button>
+            Show on map
+          </Link>
+
+          <Link
+            href="/Dashboard/Portfolio/Add"
+            className=" flex text-center bg-blue-400 w-[100px] mx-auto rounded-md p-1"
+          >
+            Add Properties
+          </Link>
         </div>
       </section>
 
