@@ -9,8 +9,20 @@ function Page() {
   const [state, setState] = useState("Select");
   const addProperty = (e) => {
     e.preventDefault();
-    console.log(e.target.streetAddress.value);
-    // console.log(state);
+    const streetAddress = e.target.streetAddress.value;
+    const city = e.target.city.value;
+    const zip = e.target.zip.value;
+    const country = e.target.country.value;
+    const propType = e.target.propType.value;
+
+    console.log({
+      streetAddress,
+      city,
+      state,
+      zip,
+      country,
+      propType,
+    });
   };
 
   const menuItems = [
@@ -69,6 +81,7 @@ function Page() {
           >
             State
           </label>
+
           <Dropdown>
             <Dropdown.Button solid className="bg-blue-500">
               {state}
@@ -98,13 +111,13 @@ function Page() {
           {/* ZIP ============================ */}
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
-            for="zipcode"
+            for="zip"
           >
             Zip
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-            id="zipcode"
+            id="zip"
             type="text"
             placeholder="#####"
           />
@@ -121,6 +134,7 @@ function Page() {
             type="text"
             placeholder="United States"
           />
+          {/* PROPERTY TYPE ============================== */}
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             for="propType"
