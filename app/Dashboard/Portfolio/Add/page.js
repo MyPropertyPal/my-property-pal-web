@@ -9,7 +9,8 @@ function Page() {
   const [state, setState] = useState("Select");
   const addProperty = (e) => {
     e.preventDefault();
-    console.log(state);
+    console.log(e.target.streetAddress.value);
+    // console.log(state);
   };
 
   const menuItems = [
@@ -85,7 +86,8 @@ function Page() {
               {(state) => (
                 <Dropdown.Item
                   key={state.key}
-                  color={state.key === "delete" ? "error" : "default"}
+                  onSelectionChange={console.log(state)}
+                  withDivider
                 >
                   {state.name}
                 </Dropdown.Item>
@@ -129,7 +131,7 @@ function Page() {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             id="propType"
             type="text"
-            placeholder="***Make this a dropdown***"
+            placeholder=""
           />
         </section>
         {/* BUTTONS */}
