@@ -7,6 +7,8 @@ import { states } from "@/data";
 //made this a capital "P" to make it a react fn component to use "useState"
 function Page() {
   const [state, setState] = useState("Select");
+
+  // 
   const addProperty = (e) => {
     e.preventDefault();
     const streetAddress = e.target.streetAddress.value;
@@ -15,14 +17,27 @@ function Page() {
     const country = e.target.country.value;
     const propType = e.target.propType.value;
 
-    console.log({
+    const prop = {
       streetAddress,
       city,
       state,
       zip,
       country,
       propType,
-    });
+    };
+
+    if (streetAddress ||
+        city ||
+        state ||
+        zip ||
+        country ||
+        propType
+      ){
+        console.log(prop, "======");
+
+      } else {
+        alert('Please fill out the form')
+      }
   };
 
   const menuItems = [
@@ -99,7 +114,7 @@ function Page() {
               {(state) => (
                 <Dropdown.Item
                   key={state.key}
-                  onSelectionChange={console.log(state)}
+                  // onSelectionChange={console.log(state)}
                   withDivider
                 >
                   {state.name}
