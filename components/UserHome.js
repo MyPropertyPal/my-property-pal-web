@@ -2,20 +2,28 @@ import React, { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import Link from "next/link";
 import { properties } from "@/data";
+import { db } from "@/app/firebase/config";
+import { collection, addDoc,
+getDocs } from "firebase/firestore";
 
-async function fetchPropeties() {
-  await fetch("api/").then((res) => {
-    console.log(res);
-  });
-}
-
-fetchPropeties();
 function UserHome({ user }) {
+  const [properties, setProperties] = useState([]);
+  // const collectionRef = collection(db, "properties")
+  // const docSnap = (async ()=> await getDocs(collectionRef))()
+
   useEffect(() => {
-    // console.log("fetching users saved properties");
-    // fetch("api/").then((res) => {
-    //   console.log(res.text());
-    // });
+    // switch to get properties
+    const colRef = collection(db,"users")
+    getDocs(colRef)
+    .then((snapshot)=>{
+      let propArr = []
+      snapshot.docs.forEach((doc)=>{
+        //add properties to an array
+        
+      })
+    })
+    console.log(colRef)
+
   }, []);
 
   return (
