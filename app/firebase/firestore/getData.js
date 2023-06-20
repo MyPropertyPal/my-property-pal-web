@@ -24,23 +24,30 @@ export default async function getUser(collection, id) {
 }
 
 //GET ALL USERS
-
+const getProperties = async () => {
+  const snapshot =  db.collection("properties")
+  console.log("SNAPSHOT ===>", snapshot);
+};
 
 //GET PROPERTIES
 
-
 const options = {
-  method: 'GET',
-  url: 'https://zillow-com1.p.rapidapi.com/propertyByCoordinates',
-  params: {long: '-118.504744', lat: '34.01822', d: '0.1', includeSold: '1'},
+  method: "GET",
+  url: "https://zillow-com1.p.rapidapi.com/propertyByCoordinates",
+  params: { long: "-118.504744", lat: "34.01822", d: "0.1", includeSold: "1" },
   headers: {
-    'X-RapidAPI-Key': 'e42da7b395msh7d24a30cfb214d8p181175jsn2683f3c9c1ae',
-    'X-RapidAPI-Host': 'zillow-com1.p.rapidapi.com'
-  }
+    "X-RapidAPI-Key": "e42da7b395msh7d24a30cfb214d8p181175jsn2683f3c9c1ae",
+    "X-RapidAPI-Host": "zillow-com1.p.rapidapi.com",
+  },
 };
 
-axios.request(options).then(function (response) {
-	console.log(response.data);
-}).catch(function (error) {
-	console.error(error);
-});
+axios
+  .request(options)
+  .then(function (response) {
+    console.log(response.data);
+  })
+  .catch(function (error) {
+    console.error(error);
+  });
+
+export { getProperties };

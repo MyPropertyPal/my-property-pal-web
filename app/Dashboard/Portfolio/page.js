@@ -1,10 +1,15 @@
 import React from "react";
 import { properties } from "@/data";
 import Link from "next/link";
+import { getDoc } from "firebase/firestore";
 
 console.log("ahkdjfa");
 function page() {
-  const addProperties = () => {};
+  /**
+   * GET PROPERTIES FROM USER
+   */
+
+  
   return (
     // PAGE CONTAINER
     <div className="flex flex-col h-screen w-screen">

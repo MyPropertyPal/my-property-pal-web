@@ -7,6 +7,9 @@ import app from "../firebase/config";
 import signIn from "../firebase/signin";
 
 import { useRouter } from "next/navigation";
+
+
+
 function Login() {
   const [passEntered, setPassEntered] = useState(true);
   const [emailEntered, setEmailEntered] = useState(true);
@@ -37,14 +40,16 @@ function Login() {
     await signIn(auth, email, password);
     const { result, error } = await signIn(email, password);
 
+    // SIGN IN ERROR HANDLING
     if (error) {
       return console.log(error);
     }
 
     // else successful
-    console.log(result);
+    // console.log(result);
     setIsLoading(false);
 
+    // ROUTE TO USER HOME
     return router.push("/");
   };
 
@@ -52,23 +57,21 @@ function Login() {
     <>
       {loading ? (
         <div className="flex w-full max-w-xs m-auto mt-[250px] shadow-md rounded p-auto h-[320px] ">
-            <Loading className="justify-center mx-auto" />
+          <Loading className="justify-center mx-auto" />
           {/* <div className="bg-slate-50  ">
           </div> */}
         </div>
       ) : (
-
-
         <div className="w-full max-w-xs m-auto mt-[250px]">
           <form
             className="shadow-md rounded px-8 pt-6 pb-8 mb-4"
             onSubmit={handleLogin}
-            >
+          >
             <div className="mb-4">
               <label
                 className="block text-gray-700 text-sm font-bold mb-2"
                 for="email"
-                >
+              >
                 Email
               </label>
               <input
@@ -78,7 +81,7 @@ function Login() {
                 id="email"
                 type="text"
                 placeholder="Email"
-                />
+              />
               {!emailEntered ? (
                 <p className="text-red-500 text-xs italic">
                   Please enter your Email.
@@ -89,7 +92,7 @@ function Login() {
               <label
                 className="block text-gray-700 text-sm font-bold mb-2"
                 for="password"
-                >
+              >
                 Password
               </label>
               <input
@@ -99,7 +102,7 @@ function Login() {
                 id="password"
                 type="password"
                 placeholder="******************"
-                />
+              />
               {!passEntered ? (
                 <p className="text-red-500 text-xs italic">
                   Please enter your Password.
@@ -110,13 +113,13 @@ function Login() {
               <button
                 className="bg-[#3AB0FF] hover:bg-[#287cb4] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 type="submit"
-                >
+              >
                 Sign In
               </button>
               <a
                 className="inline-block align-baseline font-bold text-sm text-[#3AB0FF] hover:text-[#287cb4]"
                 href="#"
-                >
+              >
                 Forgot Password?
               </a>
             </div>
@@ -125,7 +128,7 @@ function Login() {
               <Link
                 href="/Signup"
                 className="inline-block align-baseline font-bold text-sm text-[#3AB0FF] hover:text-[#287cb4]"
-                >
+              >
                 Click Here
               </Link>
             </div>
@@ -134,7 +137,6 @@ function Login() {
             &copy;2020 Acme Corp. All rights reserved.
           </p>
         </div>
-
       )}
     </>
   );
