@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
+
 import Link from "next/link";
 import { properties } from "@/data";
 import { db } from "@/app/firebase/config";
-import { collection, addDoc,
-getDocs } from "firebase/firestore";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 
 function UserHome({ user }) {
   const [properties, setProperties] = useState([]);
@@ -12,18 +12,30 @@ function UserHome({ user }) {
   // const docSnap = (async ()=> await getDocs(collectionRef))()
 
   useEffect(() => {
-    // switch to get properties
-    const colRef = collection(db,"users")
-    getDocs(colRef)
-    .then((snapshot)=>{
-      let propArr = []
-      snapshot.docs.forEach((doc)=>{
-        //add properties to an array
-        
-      })
-    })
-    console.log(colRef)
+    const fetchData = async () => {
+      try {
+        const subCollectionRef = collection(
+          db,
+          `users/${user.email}/properties`
+        );
 
+        const querySnapshot = await getDocs(subCollectionRef);
+        const userProps = [];
+
+        querySnapshot.forEach((doc) => {
+          console.log(doc.id, " => ", doc.data());
+          // Perform operations with the documents here
+          userProps.push(doc.data());
+        });
+        setProperties(userProps);
+        console.log(userProps);
+      } catch (error) {
+        console.log("Error getting subcollection documents: ", error);
+      }
+    };
+
+    console.log(properties, "========");
+    fetchData();
   }, []);
 
   return (
@@ -43,7 +55,7 @@ function UserHome({ user }) {
             {properties.map((prop, idx) => (
               <li key={idx} className="m-5 p-2 bg-slate-50">
                 <div>{prop.address}</div>
-                <div>{prop.style}</div>
+                <div>{prop.type}</div>
                 <div>${prop.price}</div>
               </li>
             ))}
