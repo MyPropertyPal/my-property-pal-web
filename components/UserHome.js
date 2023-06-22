@@ -20,15 +20,15 @@ function UserHome({ user }) {
         );
 
         const querySnapshot = await getDocs(subCollectionRef);
-        const userProps = [];
+        const userProperties = [];
 
         querySnapshot.forEach((doc) => {
           console.log(doc.id, " => ", doc.data());
           // Perform operations with the documents here
-          userProps.push(doc.data());
+          userProperties.push(doc.data());
         });
-        setProperties(userProps);
-        console.log(userProps);
+        setProperties(userProperties);
+        console.log(userProperties);
       } catch (error) {
         console.log("Error getting subcollection documents: ", error);
       }
