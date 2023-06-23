@@ -16,7 +16,6 @@ function Page() {
   useEffect(() => {
     fetchProperties(user, setProperties);
   }, []);
-  console.log(properties, "useEffect Property call");
 
   return (
     // PAGE CONTAINER

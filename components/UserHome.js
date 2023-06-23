@@ -14,8 +14,6 @@ function UserHome({ user }) {
   useEffect(() => {
     fetchProperties(user, setProperties);
   }, []);
-  console.log(properties, "useEffect Property call in UserHome comp");
-
 
   return (
     <div className=" max-h-screen flex-col space-y-7">
