@@ -1,9 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
-import { properties } from "@/data";
 import Link from "next/link";
-import { getDoc } from "firebase/firestore";
+
 import fetchProperties from "@/app/utils/fetchProperties";
 import { useAuthContext } from "@/app/context/AuthContext";
 
@@ -16,8 +15,8 @@ function Page() {
    */
   useEffect(() => {
     fetchProperties(user, setProperties);
-    console.log(properties);
   }, []);
+  console.log(properties, "useEffect Property call");
 
   return (
     // PAGE CONTAINER
@@ -37,13 +36,13 @@ function Page() {
       <h2 className="p-5 text-2xl">List of current properties: </h2>
 
       <ul>
-        {/* {properties.map((prop, idx) => (
+        {properties.map((prop, idx) => (
           <li key={idx} className="p-2 m-5 bg-slate-50">
-            <div>{prop.address}</div>
-            <div>{prop.style}</div>
-            <div>${prop.price}</div>
+            <div className="bg-slate-100 m-2">{prop.address}</div>
+            <div className="bg-slate-100 m-2">{prop.type}</div>
+            <div className="bg-slate-100 m-2">${prop.price}</div>
           </li>
-        ))} */}
+        ))}
       </ul>
     </div>
   );
