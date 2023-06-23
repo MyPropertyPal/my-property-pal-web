@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
-
+import fetchProperties from "@/app/utils/fetchProperties";
+import { useAuthContext } from "@/app/context/AuthContext";
 import Link from "next/link";
 
 import { db } from "@/app/firebase/config";
@@ -8,35 +9,13 @@ import { collection, addDoc, getDocs } from "firebase/firestore";
 
 function UserHome({ user }) {
   const [properties, setProperties] = useState([]);
-  // const collectionRef = collection(db, "properties")
-  // const docSnap = (async ()=> await getDocs(collectionRef))()
+  // const { user } = useAuthContext();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const subCollectionRef = collection(
-          db,
-          `users/${user.email}/properties`
-        );
-
-        const querySnapshot = await getDocs(subCollectionRef);
-        const userProperties = [];
-
-        querySnapshot.forEach((doc) => {
-          console.log(doc.id, " => ", doc.data());
-          // Perform operations with the documents here
-          userProperties.push(doc.data());
-        });
-        setProperties(userProperties);
-        console.log(userProperties);
-      } catch (error) {
-        console.log("Error getting subcollection documents: ", error);
-      }
-    };
-
-    console.log(properties, "========");
-    fetchData();
+    fetchProperties(user, setProperties);
   }, []);
+  console.log(properties, "useEffect Property call in UserHome comp");
+
 
   return (
     <div className=" max-h-screen flex-col space-y-7">
@@ -53,15 +32,13 @@ function UserHome({ user }) {
           <h2>Here is your current list of properties:</h2>
           {properties.length ? (
             <ul>
-              {
-                properties.map((prop, idx) => (
-                  <li key={idx} className="m-5 p-2 bg-slate-50">
-                    <div>{prop.address}</div>
-                    <div>{prop.type}</div>
-                    <div>${prop.price}</div>
-                  </li>
-                ))
-              }
+              {properties.map((prop, idx) => (
+                <li key={idx} className="m-5 p-2 bg-slate-50">
+                  <div>{prop.address}</div>
+                  <div>{prop.type}</div>
+                  <div>${prop.price}</div>
+                </li>
+              ))}
             </ul>
           ) : (
             <div className="flex bg-slate-50 m-5 h-10 ">
