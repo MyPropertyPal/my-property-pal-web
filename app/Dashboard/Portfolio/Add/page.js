@@ -8,7 +8,7 @@ import { states } from "@/data";
 function Page() {
   const [state, setState] = useState("Select");
 
-  // 
+  //
   const addProperty = (e) => {
     e.preventDefault();
     const streetAddress = e.target.streetAddress.value;
@@ -66,7 +66,7 @@ function Page() {
           {/* STREET ADDRESS */}
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
-            for="streetAddress"
+            htmlFor="streetAddress"
           >
             Street Address
           </label>
@@ -79,7 +79,7 @@ function Page() {
           {/* CITY */}
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
-            for="city"
+            htmlFor="city"
           >
             City
           </label>
@@ -92,7 +92,7 @@ function Page() {
           {/* STATE  ============================== */}
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
-            for="state"
+            htmlFor="state"
           >
             State
           </label>
@@ -126,7 +126,7 @@ function Page() {
           {/* ZIP ============================ */}
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
-            for="zip"
+            htmlFor="zip"
           >
             Zip
           </label>
@@ -139,7 +139,7 @@ function Page() {
           {/* COUNTRY ============================= */}
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
-            for="country"
+            htmlFor="country"
           >
             Country
           </label>
@@ -152,7 +152,7 @@ function Page() {
           {/* PROPERTY TYPE ============================== */}
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
-            for="propType"
+            htmlFor="propType"
           >
             Property Type
           </label>
