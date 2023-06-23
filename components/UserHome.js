@@ -47,19 +47,30 @@ function UserHome({ user }) {
         </p>
       </section>
 
-      {/* PROPERTIES SECTION */}
+      {/* USER PROPERTIES*/}
       <section className="border w-screen p-7">
         <div className="flex flex-col">
           <h2>Here is your current list of properties:</h2>
-          <ul>
-            {properties.map((prop, idx) => (
-              <li key={idx} className="m-5 p-2 bg-slate-50">
-                <div>{prop.address}</div>
-                <div>{prop.type}</div>
-                <div>${prop.price}</div>
-              </li>
-            ))}
-          </ul>
+          {properties.length ? (
+            <ul>
+              {
+                properties.map((prop, idx) => (
+                  <li key={idx} className="m-5 p-2 bg-slate-50">
+                    <div>{prop.address}</div>
+                    <div>{prop.type}</div>
+                    <div>${prop.price}</div>
+                  </li>
+                ))
+              }
+            </ul>
+          ) : (
+            <div className="flex bg-slate-50 m-5 h-10 ">
+              <p className="m-auto ">
+                Please wait while the properties are loading...
+              </p>
+            </div>
+          )}
+
           <Link href="/Dashboard/Portfolio" className="text-blue-500">
             {" "}
             See all properties
