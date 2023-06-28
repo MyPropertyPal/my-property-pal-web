@@ -37,9 +37,15 @@ function Page() {
       <ul>
         {properties.map((prop, idx) => (
           <li key={idx} className="p-2 m-5 bg-slate-50">
-            <div className="bg-slate-100 m-2">{prop.address}</div>
-            <div className="bg-slate-100 m-2">{prop.type}</div>
-            <div className="bg-slate-100 m-2">${prop.price}</div>
+            <div className="bg-slate-100 m-2">
+              Street Address: {prop.streetAddress}
+            </div>
+            <div className="bg-slate-100 m-2">
+              Property Price: {prop.propType}
+            </div>
+            <div className="bg-slate-100 m-2">
+              Purchase Price: {prop.purchasePrice ? prop.price : "N/A"}
+            </div>
           </li>
         ))}
       </ul>
