@@ -32,9 +32,10 @@ function UserHome({ user }) {
             <ul>
               {properties.map((prop, idx) => (
                 <li key={idx} className="m-5 p-2 bg-slate-50">
-                  <div>{prop.address}</div>
+                  <div>{prop.streetAddress}</div>
                   <div>{prop.type}</div>
                   <div>${prop.price}</div>
+                  <div>{prop.city}</div>
                 </li>
               ))}
             </ul>

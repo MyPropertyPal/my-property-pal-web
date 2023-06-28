@@ -3,15 +3,17 @@ import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { Dropdown } from "@nextui-org/react";
 import { states } from "@/data";
+import addProperties from "@/app/utils/addProperties";
+import { useAuthContext } from "@/app/context/AuthContext";
 
 //made this a capital "P" to make it a react fn component to use "useState"
 function Page() {
   const [state, setState] = useState("Select");
-
+  const { user } = useAuthContext();
   //
   const addProperty = (e) => {
     e.preventDefault();
-    const streetAddress = e.target.streetAddress.value;
+    let streetAddress = e.target.streetAddress.value;
     const city = e.target.city.value;
     const zip = e.target.zip.value;
     const country = e.target.country.value;
@@ -20,36 +22,37 @@ function Page() {
     const prop = {
       streetAddress,
       city,
-      state,
+      state: state.anchorKey,
       zip,
       country,
       propType,
     };
 
     // Check to make sure all inputs in the form are filled
-    if (streetAddress &&
-        city &&
-        state &&
-        zip &&
-        country &&
-        propType
-      ){
-        //  if all is true -> Add property to db functionality
+    if (streetAddress && city && state && zip && country && propType) {
+      try {
+        addProperties(user, prop);
         /**
-         * addProperty(prop) <-- call a firebase custom helper
-         *
-         * after(or before could be better) added use
-         * api to link the address with the lat & long
-         * for map functionality
-         */
 
-
-      } else {
-        /**
-         * handle the errors....
-         */
-        alert('Please fill out the form')
+       * after(or before could be better) added use
+       * api to link the address with the lat & long
+       * for map functionality,  consider adding the custom api to the 'addProperties to the help fn'
+       */
+        e.target.streetAddress.value = "";
+        e.target.city.value = "";
+        e.target.zip.value = "";
+        e.target.country.value = "";
+        e.target.propType.value = "";
+      } catch (error) {
+        console.error(error);
       }
+    } else {
+      /**
+       * handle the form errors....
+       * use this area to maybe change the border colors of the unfullfiled form boxes
+       */
+      alert("Please fill out the form");
+    }
   };
 
   const menuItems = [
