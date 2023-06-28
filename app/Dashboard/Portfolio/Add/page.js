@@ -26,16 +26,28 @@ function Page() {
       propType,
     };
 
-    if (streetAddress ||
-        city ||
-        state ||
-        zip ||
-        country ||
+    // Check to make sure all inputs in the form are filled
+    if (streetAddress &&
+        city &&
+        state &&
+        zip &&
+        country &&
         propType
       ){
-        console.log(prop, "======");
+        //  if all is true -> Add property to db functionality
+        /**
+         * addProperty(prop) <-- call a firebase custom helper
+         *
+         * after(or before could be better) added use
+         * api to link the address with the lat & long
+         * for map functionality
+         */
+
 
       } else {
+        /**
+         * handle the errors....
+         */
         alert('Please fill out the form')
       }
   };
