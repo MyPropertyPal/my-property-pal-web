@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-
+import Property from "@/components/Property";
 import Link from "next/link";
 
 import fetchProperties from "@/app/utils/fetchProperties";
@@ -10,6 +10,9 @@ function Page() {
   const { user } = useAuthContext();
   const [properties, setProperties] = useState([]);
 
+  const deleteProp = () => {
+    alert('Property deleted')
+  };
   /**
    * GET PROPERTIES FROM USER
    */
@@ -37,15 +40,8 @@ function Page() {
       <ul>
         {properties.map((prop, idx) => (
           <li key={idx} className="p-2 m-5 bg-slate-50">
-            <div className="bg-slate-100 m-2">
-              Street Address: {prop.streetAddress}
-            </div>
-            <div className="bg-slate-100 m-2">
-              Property Price: {prop.propType}
-            </div>
-            <div className="bg-slate-100 m-2">
-              Purchase Price: {prop.purchasePrice ? prop.price : "N/A"}
-            </div>
+            {/* Make this a property li component? */}
+            <Property prop={prop}/>
           </li>
         ))}
       </ul>
