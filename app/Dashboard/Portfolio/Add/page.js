@@ -5,11 +5,13 @@ import { Dropdown } from "@nextui-org/react";
 import { states } from "@/data";
 import addProperties from "@/app/utils/addProperties";
 import { useAuthContext } from "@/app/context/AuthContext";
+import { useRouter } from "next/navigation";
 
 //made this a capital "P" to make it a react fn component to use "useState"
 function Page() {
   const [state, setState] = useState("Select");
   const { user } = useAuthContext();
+  const router = useRouter();
   //
   const addProperty = (e) => {
     e.preventDefault();
@@ -28,10 +30,11 @@ function Page() {
       propType,
     };
 
-    addProperties(user, prop);
     // Check to make sure all inputs in the form are filled
-    if (streetAddress && city && state && zip && country && propType) {
+    if (streetAddress && city && state && zip && country ) {
       try {
+        addProperties(user, prop);
+        router.push("/");
         /**
 
        * after(or before could be better) added use
@@ -53,14 +56,9 @@ function Page() {
        * handle the form errors....
        * use this area to maybe change the border colors of the unfullfiled form boxes
        */
-      // alert("Please fill out the form");
+      alert("Please fill out the form");
     }
   };
-
-  const menuItems = [
-    { key: "NC", name: "North Carolina" },
-    { key: "SC", name: "South Carolina" },
-  ];
 
   // const selectedValue = =useMemo(
   //   () => Array.from(selected).join(", ").replaceAll("_", " "),
