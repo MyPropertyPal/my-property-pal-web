@@ -7,17 +7,15 @@ async function addProperties(user, prop) {
   const subCollectionRef = collection(db, `users/${user.email}/properties`);
   const geoCodeAddress = `${prop.streetAddress} ${prop.city} ${prop.state} ${prop.zip}`;
 
-  if (!prop.lat || !prop.lng) {
-    // api call simulation... ->
-    prop = await geocoding(geoCodeAddress);
-    console.log(prop.Results[0], "++++");
-  }
+  // api call simulation... ->
+  const formatedProp = await geocoding(geoCodeAddress);
+  console.log(formatedProp.Results[0], "++++");
 
   const setData = async () => {
-    // await addDoc(subCollectionRef, prop);
+    await addDoc(subCollectionRef, formatedProp);
   };
   // ADD TO DB ACTION
-  // setData();
+  setData();
 }
 
 export default addProperties;
