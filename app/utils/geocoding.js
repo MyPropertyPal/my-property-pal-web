@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 async function geocoding(geoCodeAddress) {
-  console.log(geoCodeAddress);
+
 
   const options = {
     method: "GET",
@@ -17,8 +17,10 @@ async function geocoding(geoCodeAddress) {
 
   try {
     const response = await axios.request(options);
-
-    console.log(response.data);
+    const lat = response.data.Results[0].latitude
+    const lng = response.data.Results[0].longitude
+    const coords = {lat: lat,lng: lng}
+    console.log(coords);
     return response.data;
   } catch (error) {
     console.error(error);

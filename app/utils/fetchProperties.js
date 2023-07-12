@@ -2,34 +2,26 @@ import React, { useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase/config";
 
-function fetchProperties(user, setProperties) {
-  const fetchData = async () => {
-    try {
-      const subCollectionRef = collection(db, `users/${user.email}/properties`);
+async function fetchProperties(user, setProperties) {
+  try {
+    const subCollectionRef = collection(db, `users/${user.email}/properties`);
 
-      // H
-      const querySnapshot = await getDocs(subCollectionRef);
-      const userProperties = [];
+    // H
+    const querySnapshot = await getDocs(subCollectionRef);
+    const userProperties = [];
 
-      querySnapshot.forEach((doc) => {
-        // Perform operations with the documents here
-        userProperties.push(doc.data());
-      });
-      if (userProperties) {
-        console.log(userProperties);
-        setProperties(userProperties);
-        // RETURNS THE USERS PROPERTIES
-        return userProperties;
-      } else {
-        return "waiting for properties";
-      }
-      // console.log(userProperties);
-    } catch (error) {
-      console.log("Error getting subcollection documents: ", error);
-    }
-  };
+    querySnapshot.docs.forEach((doc) => {
+      // Access the data of each document using the `data()` method
+      const property = doc.data();
+      // console.log(property)
+      userProperties.push(property);
+    });
 
-  fetchData();
+    console.log(userProperties);
+    return userProperties;
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 export default fetchProperties;

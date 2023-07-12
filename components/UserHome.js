@@ -9,10 +9,16 @@ import { collection, addDoc, getDocs } from "firebase/firestore";
 
 function UserHome({ user }) {
   const [properties, setProperties] = useState([]);
-  // const { user } = useAuthContext();
 
   useEffect(() => {
-    fetchProperties(user, setProperties);
+    //the fetch is a promise because it is async awaits
+    fetchProperties(user, setProperties)
+      .then((properties) => {
+        setProperties(properties);
+      })
+      .catch((e) =>
+        console.log("somthing went wrong while trying to fetch the properties")
+      );
   }, []);
 
   return (
@@ -32,7 +38,7 @@ function UserHome({ user }) {
             <ul>
               {properties.map((prop, idx) => (
                 <li key={idx} className="m-5 p-2 bg-slate-50">
-                  <div>{prop.streetAddress}</div>
+                  <div>{prop.Results[0].address}</div>
                   <div>{prop.type}</div>
                   <div>${prop.price}</div>
                   <div>{prop.city}</div>

@@ -9,7 +9,7 @@ async function addProperties(user, prop) {
 
   // api call simulation... ->
   const formatedProp = await geocoding(geoCodeAddress);
-  console.log(formatedProp.Results[0], "++++");
+  // console.log(formatedProp.Results[0], "++++");
 
   const setData = async () => {
     await addDoc(subCollectionRef, formatedProp);
