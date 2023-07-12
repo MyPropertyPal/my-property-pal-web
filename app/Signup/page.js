@@ -13,7 +13,7 @@ function SignUp() {
   let router = useRouter();
   const handleSignup = async (e) => {
     e.preventDefault();
-    alert('FORM CLICKED')
+    alert("FORM CLICKED");
     const firstName = e.target.firstName.value;
     const lastName = e.target.lastName.value;
     const email = e.target.email.value;
@@ -35,6 +35,7 @@ function SignUp() {
       await addData("users", email, data);
 
       if (error) {
+        alert("A error has occured at Signup/page.js");
         return console.log(error);
       }
 

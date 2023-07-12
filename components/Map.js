@@ -2,7 +2,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import Map, { Marker, Layer } from "react-map-gl";
 import mapboxgl from "mapbox-gl";
+import { useAuthContext } from "@/app/context/AuthContext";
 import "mapbox-gl/dist/mapbox-gl.css";
+
+
 
 // dummy data
 const properties = [
@@ -44,9 +47,12 @@ const waterLayer = {
 
 // if (!isLoaded) return <div>Loading...</div>;
 export default function MapBox() {
+
   const [lng, setLng] = useState(null);
   const [lat, setLat] = useState(null);
   const mapRef = useRef(null);
+
+  const { user } = useAuthContext();
 
   // async function getData() {
   //   const data = await response.text();
@@ -66,6 +72,7 @@ export default function MapBox() {
       }
       // after lat and lng set... call RE api to get data with it
     );
+    console.log(user.email, "++++++++++++");
   }, [lat, lng]);
 
   if (!lat || !lng) {

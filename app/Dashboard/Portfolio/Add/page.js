@@ -28,16 +28,18 @@ function Page() {
       propType,
     };
 
+    addProperties(user, prop);
     // Check to make sure all inputs in the form are filled
     if (streetAddress && city && state && zip && country && propType) {
       try {
-        addProperties(user, prop);
         /**
 
        * after(or before could be better) added use
        * api to link the address with the lat & long
        * for map functionality,  consider adding the custom api to the 'addProperties to the help fn'
        */
+
+        // RESET FORM AFTER SUBMIT
         e.target.streetAddress.value = "";
         e.target.city.value = "";
         e.target.zip.value = "";
@@ -51,7 +53,7 @@ function Page() {
        * handle the form errors....
        * use this area to maybe change the border colors of the unfullfiled form boxes
        */
-      alert("Please fill out the form");
+      // alert("Please fill out the form");
     }
   };
 

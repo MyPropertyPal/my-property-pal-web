@@ -1,14 +1,23 @@
 import React, { useState } from "react";
 import { collection, getDocs, addDoc } from "firebase/firestore";
 import { db } from "../firebase/config";
+import geocoding from "./geocoding";
 
-function addProperties(user, prop) {
+async function addProperties(user, prop) {
   const subCollectionRef = collection(db, `users/${user.email}/properties`);
-  console.log(subCollectionRef);
+  const geoCodeAddress = `${prop.streetAddress} ${prop.city} ${prop.state} ${prop.zip}`;
+
+  if (!prop.lat || !prop.lng) {
+    // api call simulation... ->
+    prop = await geocoding(geoCodeAddress);
+    console.log(prop.Results[0], "++++");
+  }
+
   const setData = async () => {
-    await addDoc(subCollectionRef, prop);
+    // await addDoc(subCollectionRef, prop);
   };
-  setData();
+  // ADD TO DB ACTION
+  // setData();
 }
 
 export default addProperties;
