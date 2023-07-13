@@ -7,7 +7,7 @@ import addProperties from "@/app/utils/addProperties";
 import { useAuthContext } from "@/app/context/AuthContext";
 import { useRouter } from "next/navigation";
 
-//made this a capital "P" to make it a react fn component to use "useState"
+
 function Page() {
   const [state, setState] = useState("Select");
   const { user } = useAuthContext();
@@ -35,12 +35,6 @@ function Page() {
       try {
         addProperties(user, prop);
         router.push("/");
-        /**
-
-       * after(or before could be better) added use
-       * api to link the address with the lat & long
-       * for map functionality,  consider adding the custom api to the 'addProperties to the help fn'
-       */
 
         // RESET FORM AFTER SUBMIT
         e.target.streetAddress.value = "";
@@ -60,10 +54,7 @@ function Page() {
     }
   };
 
-  // const selectedValue = =useMemo(
-  //   () => Array.from(selected).join(", ").replaceAll("_", " "),
-  //   [selected]
-  // );
+
 
   return (
     // PAGE CONTAINER
@@ -129,7 +120,7 @@ function Page() {
               {(state) => (
                 <Dropdown.Item
                   key={state.key}
-                  // onSelectionChange={console.log(state)}
+
                   withDivider
                 >
                   {state.name}
