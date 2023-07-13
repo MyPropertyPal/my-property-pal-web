@@ -28,27 +28,16 @@ function Page() {
   return (
     <>
       {user ? (
-        <div className="flex-col p-5 h-screen bg-red-100">
+        <div className="flex-col p-5 h-screen w-screen bg-red-100">
           <h1 className="text-2xl">
             Welcome to the Dashboard {user.firstName}
           </h1>
           <ul className="text-xl space-y-3">
             <div className="underline">To Do</div>
             <li className="list-decimal ml-8">
-              Work on loading screen for dashboard | The dashboard should show
-              your current properties and their respective numbers, like a
-              portfolio overview
+             Make map pull properties from db
             </li>
-            <li className="list-decimal ml-8">Work on color palette</li>
-            <li className="list-decimal ml-8">Research Mapbox api </li>
-            <li className="list-decimal ml-8">
-              Add map (search tab) feature and show properites in the area for
-              sale
-            </li>
-            <li className="list-decimal ml-8">
-              Make a add property button somewhere that adds a property
-              colection to the firestore db with address.
-            </li>
+
           </ul>
         </div>
       ) : (

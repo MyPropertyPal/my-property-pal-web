@@ -9,7 +9,7 @@ import { collection, addDoc, getDocs } from "firebase/firestore";
 
 function UserHome({ user }) {
   const [properties, setProperties] = useState([]);
-  // const { user } = useAuthContext();
+
 
   useEffect(() => {
     fetchProperties(user, setProperties);
@@ -30,7 +30,7 @@ function UserHome({ user }) {
           <h2>Here is your current list of properties:</h2>
           {properties.length ? (
             <ul>
-              {properties.map((prop, idx) => (
+              {properties.slice(0, 4).map((prop, idx) => (
 
                 <li key={idx} className="m-5 p-2 bg-slate-50">
                   <div>Street Address: {prop.streetAddress}</div>

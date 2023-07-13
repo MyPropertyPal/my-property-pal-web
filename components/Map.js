@@ -122,8 +122,7 @@ export default function MapBox() {
           longitude={prop.lng}
           latitude={prop.lat}
           onClick={(e) => {
-            // console.log(e);
-            // alert(prop.lng + " " + prop.lat);
+         
             alert(`$${prop.purchasePrice}`);
           }}
           color={prop.color}
