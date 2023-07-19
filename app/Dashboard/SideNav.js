@@ -25,16 +25,16 @@ function SideNav() {
       <div className="flex">
         <span
           className={
-            pathname === "/Dashboard/Search"
+            pathname === "/Dashboard/Map"
               ? "bg-[#DBB073] hover:visible w-[10px] h-[2px] mr-2 my-auto"
               : "bg-[#dbb07383] hover:visible w-[10px] h-[2px] mr-2 my-auto"
           }
         ></span>
         <Link
           className="hover:bg-slate-500 transition-all hover:px-3 w-fit rounded-lg"
-          href="Dashboard/Search"
+          href="Dashboard/Map"
         >
-          Search
+          Map
         </Link>
       </div>
       <div className="flex">

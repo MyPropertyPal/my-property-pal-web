@@ -3,7 +3,7 @@ import React from "react";
 
 import Map from "@/components/Map";
 
-function Search() {
+function PropertyMap() {
   return (
     <div className="flex flex-col h-screen bg-gray-500  w-[100%] p-8 overflow-hidden">
       <>
@@ -15,4 +15,4 @@ function Search() {
   );
 }
 
-export default Search;
+export default PropertyMap;
