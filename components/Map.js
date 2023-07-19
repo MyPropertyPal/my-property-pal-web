@@ -5,8 +5,6 @@ import mapboxgl from "mapbox-gl";
 import { useAuthContext } from "@/app/context/AuthContext";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-
-
 // dummy data
 const properties = [
   {
@@ -32,6 +30,23 @@ const properties = [
   },
 ];
 
+/**
+ * FOG
+ */
+
+const fog = {
+  range: [0.8, 8],
+  color: 'white',
+  "horizon-blend": 0.5,
+  "high-color": "#245bde",
+  "space-color": "#000000",
+  "star-intensity": 0.5,
+};
+
+/**
+ * LAYERS
+ */
+
 const waterLayer = {
   id: "water",
   type: "fill",
@@ -45,9 +60,12 @@ const waterLayer = {
   },
 };
 
+/**
+ * LOADING
+ */
+
 // if (!isLoaded) return <div>Loading...</div>;
 export default function MapBox() {
-
   const [lng, setLng] = useState(null);
   const [lat, setLat] = useState(null);
   const mapRef = useRef(null);
@@ -58,7 +76,10 @@ export default function MapBox() {
   //   const data = await response.text();
   // }
 
-  const mapLoaded = () => {
+  /**
+   * MAP ONLOAD
+   */
+  const mapLoaded = (map) => {
     // this funtion will execute when the map loads
     console.log(mapRef);
   };
@@ -72,7 +93,6 @@ export default function MapBox() {
       }
       // after lat and lng set... call RE api to get data with it
     );
-    console.log(user.email, "++++++++++++");
   }, [lat, lng]);
 
   if (!lat || !lng) {
@@ -95,8 +115,7 @@ export default function MapBox() {
       }}
       mapStyle="mapbox://styles/mapbox/dark-v10"
       logoPosition="top-right"
-      fog={true}
-      // interactive={false}
+      fog={fog}
       ref={mapRef}
       onLoad={mapLoaded(mapRef)}
     >
@@ -122,7 +141,6 @@ export default function MapBox() {
           longitude={prop.lng}
           latitude={prop.lat}
           onClick={(e) => {
-         
             alert(`$${prop.purchasePrice}`);
           }}
           color={prop.color}
