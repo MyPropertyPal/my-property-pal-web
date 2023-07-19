@@ -35,9 +35,8 @@ function Page() {
           <ul className="text-xl space-y-3">
             <div className="underline">To Do</div>
             <li className="list-decimal ml-8">
-             Make map pull properties from db
+              Make map pull properties from db
             </li>
-
           </ul>
         </div>
       ) : (
