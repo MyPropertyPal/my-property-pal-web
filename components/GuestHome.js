@@ -1,7 +1,14 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 function GuestHome() {
+  /**
+   * Static Image
+   */
+  const mapBoxStatImg =
+    "https://api.mapbox.com/styles/v1/mapbox/dark-v10/static/pin-s+040cfb(-122.4848,37.7768),pin-s+040dfa(-121.9888,37.5768),pin-s+040dfa(-122.0848,37.6768),pin-s+040dfa(-122.2444,37.8268)/-122.2848,37.7768,7.8,8,50/800x600@2x?access_token=pk.eyJ1IjoiaGNoYWxpbjk4IiwiYSI6ImNsZzI5MHE3cTAzNXYzaHFwZnkzOGo4czEifQ.ElOOIOXuiZACF4j0219Wqw";
+
   return (
     // Hero section
     <div
@@ -45,18 +52,24 @@ function GuestHome() {
           </div>
         </div>
         {/* middle seciont w/ background */}
-        <div className="h-full  z-10 relative mt-10 ">
+        <div className="h-full  z-10 relative mt-10 bg-slate-100 pt-5 rounded-t-[20%]">
           {/* blue bg */}
-          <div className="absolute h-full w-[100%] top-20 md:top-20 z-0 bg-blue-400 rounded-t-[20%] md:rounded-t-[40%]"></div>
+          {/* <div className="absolute h-full mx-10 w-[60%] top-20 left-[25%] md:top-20 z-0 bg-blue-400 rounded-t-[20%] md:rounded-t-[40%]"></div> */}
           {/* black box */}
+          <p className="text-slate-800 text-center pt-8 text-3xl ">
+            Visualize your portfolio with mapbox
+          </p>
           <div
-            className=" relative w-[70%] md:w-[50%] h-[300px] md:h-[400px] z-10 m-auto bg-slate-900 border-[#D39852]
+            className=" relative w-[70%] md:w-[50%] h-[400px] md:h-[400px] z-10 m-auto bg-slate-900 border-[#D39852]
           border-[3px] rounded-3xl mt-5"
           >
-            <p className="text-white text-center pt-8 text-3xl">*Map Info*</p>
-            <div className="text-white text-center pt-8 text-3xl font-thin">
-              **Picture of mapbox api**
-            </div>
+            <Image
+              className=" rounded-3xl object-cover "
+              src={mapBoxStatImg}
+              fill={true}
+              unoptimized={false}
+              alt="Static photo of mapbox api"
+            />
           </div>
         </div>
         {/* BOTTOM */}
