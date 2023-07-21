@@ -100,7 +100,7 @@ export default function MapBox() {
     getData();
   }, []);
 
-  if (!lat || !lng & properties.length) {
+  if (!lat || !lng & properties) {
     return <div>Loading map data</div>;
   }
 
@@ -140,18 +140,23 @@ export default function MapBox() {
         rotation={20}
       ></Marker>
       {/* Location of property data */}
-      {properties.map((prop, index) => (
-        // console.log(prop)
-        <Marker
-          key={index}
-          longitude={prop.coords.lng}
-          latitude={prop.coords.lat}
-          onClick={(e) => {
-            alert(`$${prop.streetAddress}`);
-          }}
-          color={prop.color}
-        />
-      ))}
+      {properties.map((prop, index) => {
+        {
+          const address = `${prop.streetAddress} ${prop.city} ${prop.state}`;
+          return (
+            // console.log(prop)
+            <Marker
+              key={index}
+              longitude={prop.coords.lng}
+              latitude={prop.coords.lat}
+              onClick={(e) => {
+                alert(address);
+              }}
+              color={prop.color}
+            />
+          );
+        }
+      })}
     </Map>
   );
 }
