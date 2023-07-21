@@ -4,31 +4,32 @@ import Map, { Marker, Layer } from "react-map-gl";
 import mapboxgl from "mapbox-gl";
 import { useAuthContext } from "@/app/context/AuthContext";
 import "mapbox-gl/dist/mapbox-gl.css";
+import fetchProperties from "@/app/utils/fetchProperties";
 
 // dummy data
-const properties = [
-  {
-    address: "123 stealth st.",
-    lat: 34.232276,
-    lng: -77.946817,
-    purchasePrice: 680000,
-    color: "yellow",
-  },
-  {
-    address: "123 main st.",
-    lat: 34.230178,
-    lng: -77.942374,
-    purchasePrice: 400000,
-    color: "orange",
-  },
-  {
-    address: "123 todd st.",
-    lat: 34.222915,
-    lng: -77.939688,
-    purchasePrice: 734000,
-    color: "green",
-  },
-];
+// const properties = [
+//   {
+//     address: "123 stealth st.",
+//     lat: 34.232276,
+//     lng: -77.946817,
+//     purchasePrice: 680000,
+//     color: "yellow",
+//   },
+//   {
+//     address: "123 main st.",
+//     lat: 34.230178,
+//     lng: -77.942374,
+//     purchasePrice: 400000,
+//     color: "orange",
+//   },
+//   {
+//     address: "123 todd st.",
+//     lat: 34.222915,
+//     lng: -77.939688,
+//     purchasePrice: 734000,
+//     color: "green",
+//   },
+// ];
 
 /**
  * FOG
@@ -36,7 +37,7 @@ const properties = [
 
 const fog = {
   range: [0.8, 8],
-  color: 'white',
+  color: "white",
   "horizon-blend": 0.5,
   "high-color": "#245bde",
   "space-color": "#000000",
@@ -68,24 +69,27 @@ const waterLayer = {
 export default function MapBox() {
   const [lng, setLng] = useState(null);
   const [lat, setLat] = useState(null);
+  const [properties, setProperties] = useState();
   const mapRef = useRef(null);
 
   const { user } = useAuthContext();
 
-  // async function getData() {
-  //   const data = await response.text();
-  // }
+  async function getData() {
+    const propData = await fetchProperties(user, setProperties);
+    // setProperties(propData)
+    console.log("Properties:", propData);
+  }
 
   /**
    * MAP ONLOAD
    */
   const mapLoaded = (map) => {
     // this funtion will execute when the map loads
-    console.log(mapRef);
+    // console.log(mapRef);
   };
 
   useEffect(() => {
-    // get the location on  load
+    // get the location on load
     navigator.geolocation.getCurrentPosition(
       ({ coords: { latitude, longitude } }) => {
         setLat(latitude);
@@ -93,10 +97,11 @@ export default function MapBox() {
       }
       // after lat and lng set... call RE api to get data with it
     );
-  }, [lat, lng]);
+    getData();
+  }, []);
 
-  if (!lat || !lng) {
-    return <div>Getting your location. Please wait.</div>;
+  if (!lat || !lng & properties.length) {
+    return <div>Loading map data</div>;
   }
 
   return (
@@ -136,12 +141,13 @@ export default function MapBox() {
       ></Marker>
       {/* Location of property data */}
       {properties.map((prop, index) => (
+        // console.log(prop)
         <Marker
           key={index}
-          longitude={prop.lng}
-          latitude={prop.lat}
+          longitude={prop.coords.lng}
+          latitude={prop.coords.lat}
           onClick={(e) => {
-            alert(`$${prop.purchasePrice}`);
+            alert(`$${prop.streetAddress}`);
           }}
           color={prop.color}
         />
