@@ -10,7 +10,6 @@ import { collection, addDoc, getDocs } from "firebase/firestore";
 function UserHome({ user }) {
   const [properties, setProperties] = useState([]);
 
-
   useEffect(() => {
     fetchProperties(user, setProperties);
   }, []);
@@ -31,7 +30,6 @@ function UserHome({ user }) {
           {properties.length ? (
             <ul>
               {properties.slice(0, 4).map((prop, idx) => (
-
                 <li key={idx} className="m-5 p-2 bg-slate-50">
                   <div>Street Address: {prop.streetAddress}</div>
                   <div>{prop.type}</div>
@@ -55,7 +53,7 @@ function UserHome({ user }) {
           </Link>
 
           <Link
-            href="/Dashboard/Search"
+            href="/Dashboard/Map"
             className=" flex text-center bg-blue-400 w-[100px] mx-auto rounded-md p-1 mb-3"
           >
             Show on map
