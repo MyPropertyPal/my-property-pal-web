@@ -1,9 +1,7 @@
 import React from "react";
 
 function page() {
-  return <div
-  className="h-screen"
-  >This is the settings page</div>;
+  return <div className="h-screen">Coming Soon</div>;
 }
 
 export default page;

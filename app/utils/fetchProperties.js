@@ -15,8 +15,9 @@ async function fetchProperties(user, setProperties) {
       userProperties.push(doc.data());
     });
     if (userProperties) {
+      // console.log(userProperties, "___");
       setProperties(userProperties);
-      // RETURNS THE USERS PROPERTIES
+
       return userProperties;
     } else {
       return "waiting for properties";

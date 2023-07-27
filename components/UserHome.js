@@ -3,6 +3,7 @@ import { getAuth } from "firebase/auth";
 import fetchProperties from "@/app/utils/fetchProperties";
 import { useAuthContext } from "@/app/context/AuthContext";
 import Link from "next/link";
+import Property from "./Property";
 
 import { db } from "@/app/firebase/config";
 import { collection, addDoc, getDocs } from "firebase/firestore";
@@ -31,11 +32,8 @@ function UserHome({ user }) {
             <ul>
               {properties.slice(0, 4).map((prop, idx) => (
                 <li key={idx} className="m-5 p-2 bg-slate-50">
-                  <div>Street Address: {prop.streetAddress}</div>
-                  <div>{prop.type}</div>
-                  <div>Latitude: {prop.coords.lat}</div>
-                  <div>Longitude: {prop.coords.lng}</div>
-                  <div>City: {prop.city}</div>
+                  <Property prop={prop} />
+                  {/* {console.log(prop)} */}
                 </li>
               ))}
             </ul>
@@ -44,6 +42,7 @@ function UserHome({ user }) {
               <p className="m-auto ">
                 Please wait while the properties are loading...
               </p>
+              <button></button>
             </div>
           )}
 
