@@ -6,30 +6,9 @@ import { useAuthContext } from "@/app/context/AuthContext";
 import "mapbox-gl/dist/mapbox-gl.css";
 import fetchProperties from "@/app/utils/fetchProperties";
 
-// dummy data
-// const properties = [
-//   {
-//     address: "123 stealth st.",
-//     lat: 34.232276,
-//     lng: -77.946817,
-//     purchasePrice: 680000,
-//     color: "yellow",
-//   },
-//   {
-//     address: "123 main st.",
-//     lat: 34.230178,
-//     lng: -77.942374,
-//     purchasePrice: 400000,
-//     color: "orange",
-//   },
-//   {
-//     address: "123 todd st.",
-//     lat: 34.222915,
-//     lng: -77.939688,
-//     purchasePrice: 734000,
-//     color: "green",
-//   },
-// ];
+/**
+ * See api/dashboard/index for fake data
+ */
 
 /**
  * FOG
@@ -47,7 +26,7 @@ const fog = {
 /**
  * LAYERS
  */
-
+// Not in use
 const waterLayer = {
   id: "water",
   type: "fill",
